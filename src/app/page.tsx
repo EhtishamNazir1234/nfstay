@@ -4,17 +4,19 @@ import localImage from "../../public/assets/8d19f22e813cdeceb8a2db88700143efedce
 import { CommonGradientBtn } from "./../../public/common/gradient-button";
 import { BookingSearchBar } from "./../../public/common/bar";
 import { NavigationIcon } from "../../public/assets/icons/icons";
-// import image2 from './../../public/assets/image2.jpg'
-import {
-  Navbar,
-  NavBody,
-  NavItems,
-  // NavbarButton,
-  NavbarLogo,
-} from "@/components/ui/Resizable-navbar";
+import { JourneySection } from "@/components/ui/Journery";
+import HomeNav from "../../public/common/page";
 import { PropertyCard } from "@/components/ui/PropertyCard";
 import { MediaBanner } from "@/components/ui/Media-banner";
 import { BlockchainTech } from "@/components/ui/blockChainFeature/BlockChainFeature";
+import { HowItWorks } from "@/components/ui/HowItWorks";
+import { ImmersiveSection } from "@/components/ui/VrIExp";
+import Roadmap from "@/components/ui/Visionary";
+import { Carousel } from "@/components/ui/Carousall";
+import { AuditedSecurity } from "@/components/ui/AuditedSecurity";
+import { FAQ } from "@/components/ui/FAQ";
+import { MarketplaceBlog } from "@/components/ui/MarketPlaceBlog";
+import { ModeToggle } from "@/components/ModeToggle";
 
 const PROPERTIES = [
   {
@@ -73,36 +75,7 @@ export default function Home() {
   return (
     <div className="">
       <div className="">
-        <Navbar className="fixed top-15 left-0">
-          <NavBody>
-            <NavbarLogo />
-            <NavItems
-              className="text-white"
-              items={[
-                { name: "Dashboard", link: "#" },
-                { name: "Printer", link: "#" },
-                { name: "Farm", link: "#" },
-                { name: "MarketPlace", link: "#" },
-                { name: "Migrate", link: "#" },
-                { name: "Portfolio", link: "#" },
-              ]}
-            />
-            <div className="px-15 ">
-              <CommonGradientBtn
-                label="Launch dApp"
-                icon={
-                  <g style={{ mixBlendMode: "luminosity", opacity: 0.6 }}>
-                    <rect
-                      width="179.652"
-                      height="71"
-                      fill="url(#pattern0_1863_1206)"
-                    />
-                  </g>
-                }
-              />
-            </div>
-          </NavBody>
-        </Navbar>
+        <HomeNav />
         <div className="relative py-14 overflow-hidden">
           <Image
             src={localImage}
@@ -110,6 +83,7 @@ export default function Home() {
             fill
             className="object-cover scale-105"
           />
+        
 
           <div className="absolute inset-0 bg-[#2B2828] opacity-50 z-10" />
 
@@ -122,6 +96,7 @@ export default function Home() {
             </div>
             <div className="">
               <h1 className="text-white font-light text-xl w-130">
+                
                 <span>
                   Tokenizing the Value of Unused Nights, One Token at a Time —
                   Never Expires, Always Valuable .
@@ -149,7 +124,44 @@ export default function Home() {
           <MediaBanner />
         </div>
         <div>
-          <BlockchainTech/>
+          <BlockchainTech />
+        </div>
+        <div>
+          <JourneySection />
+        </div>
+        <div>
+          <HowItWorks />
+        </div>
+        <div>
+          <ImmersiveSection
+            description="NFsTay offers VR experiences that allow you to virtually visit properties before booking. No more surprises, only assured quality and transparency. Experience your future stay from the comfort of your home."
+            imageSrc="/assets/VrImg.png"
+            imageAlt=""
+            highlightText="Immerse Yourself Before you Stay"
+          />
+        </div>
+        <div>
+          <Roadmap />
+        </div>
+        <div>
+          <Carousel />
+        </div>
+        <div>
+          <ImmersiveSection
+            description="Our whitepaper outlines the strategic fusion of real estate knowledge and blockchain innovation that propels NFsTay forward. Discover how we're paving a new path in travel.  With NFsTay, every journey begins with a promise of more than just travel; it's an invitation to experience the world in new and exciting ways. Start your exploration with us today."
+            imageSrc="/assets/whitepaper.png"
+            imageAlt=""
+            highlightText="Explore the NFsTay Whitepaper"
+          />
+        </div>
+        <div>
+          <AuditedSecurity />
+        </div>
+        <div>
+          <FAQ />
+        </div>
+        <div>
+          <MarketplaceBlog />
         </div>
       </div>
     </div>
