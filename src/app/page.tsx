@@ -4,18 +4,18 @@ import localImage from "../../public/assets/8d19f22e813cdeceb8a2db88700143efedce
 import { CommonGradientBtn } from "./../../public/common/gradient-button";
 import { BookingSearchBar } from "./../../public/common/bar";
 import { NavigationIcon } from "../../public/assets/icons/icons";
-import { JourneySection } from "@/components/ui/Journery";
+import { JourneySection } from "@/components/ui/landingPage/Journery";
 import HomeNav from "../../public/common/page";
-import { PropertyCard } from "@/components/ui/PropertyCard";
-import { MediaBanner } from "@/components/ui/Media-banner";
+import { PropertyCard } from "@/components/ui/landingPage/PropertyCard";
+import { MediaBanner } from "@/components/ui/landingPage/Media-banner";
 import { BlockchainTech } from "@/components/ui/blockChainFeature/BlockChainFeature";
-import { HowItWorks } from "@/components/ui/HowItWorks";
-import { ImmersiveSection } from "@/components/ui/VrIExp";
-import Roadmap from "@/components/ui/Visionary";
-import { Carousel } from "@/components/ui/Carousall";
-import { AuditedSecurity } from "@/components/ui/AuditedSecurity";
-import { FAQ } from "@/components/ui/FAQ";
-import { MarketplaceBlog } from "@/components/ui/MarketPlaceBlog";
+import { HowItWorks } from "@/components/ui/landingPage/HowItWorks";
+import { ImmersiveSection } from "@/components/ui/landingPage/VrIExp";
+import Roadmap from "@/components/ui/landingPage/Visionary";
+import { Carousel } from "@/components/ui/landingPage/Carousall";
+import { AuditedSecurity } from "@/components/ui/landingPage/AuditedSecurity";
+import { FAQ } from "@/components/ui/landingPage/FAQ";
+import { MarketplaceBlog } from "@/components/ui/landingPage/MarketPlaceBlog";
 import { ModeToggle } from "@/components/ModeToggle";
 
 const PROPERTIES = [

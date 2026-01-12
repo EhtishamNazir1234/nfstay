@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Megaphone, Lock } from "lucide-react";
-import { CommonGradientBtn } from "../../../public/common/gradient-button";
+import { CommonGradientBtn } from "../../../../public/common/gradient-button";
 import Image from "next/image";
-import megaphone from "./../../../public/assets/megaphone.png";
-import lock from "./../../../public/assets/lock.png";
+import megaphone from "./../../../../public/assets/megaphone.png";
+import lock from "./../../../../public/assets/lock.png";
 export function Footer() {
   return (
     <footer className="w-full overflow-hidden bg-gradient-to-b from-[#2a0e4a] via-[#0d1b1e] to-[#0a1a14] text-white">

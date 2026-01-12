@@ -61,12 +61,11 @@ export default function AssetsOverview({
   title = "ASSETS OVERVIEW",
 }: AssetsOverviewProps) {
   return (
-    <div className="bg-white dark:bg-[#071022] rounded-lg p-6  shadow-sm ">
+    <div className="bg-white w-[600px]  mt-7 dark:bg-[#071022] rounded-lg p-8 px-10 shadow-sm">
       <h2 className=" font-bold text-gray-900 dark:text-gray-100 mb-6 ">{title}</h2>
-
-      <div className="space-y-10">
+      <div className="space-y-7">
         {assets.map((asset) => (
-          <div key={asset.id} className="flex  flex-col gap-3">
+          <div key={asset.id} className="flex flex-col gap-3">
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-3">
                 <div>{asset.logo}</div>

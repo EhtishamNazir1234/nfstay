@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { CommonGradientBtn } from "../../../public/common/gradient-button";
+import { CommonGradientBtn } from "../../../../public/common/gradient-button";
 
 export function MarketplaceBlog() {
   const articles = [

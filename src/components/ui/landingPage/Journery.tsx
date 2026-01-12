@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { CommonGradientBtn } from "../../../public/common/gradient-button";
-import rect from "./../../../public/assets/Rectanglle.png";
+import { CommonGradientBtn } from "../../../../public/common/gradient-button";
+import rect from "./../../../../public/assets/Rectanglle.png";
 
 export function JourneySection() {
   return (

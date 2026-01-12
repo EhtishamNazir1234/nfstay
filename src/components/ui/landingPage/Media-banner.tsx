@@ -3,7 +3,7 @@ import {
   BussinesInsider,
   Benzinga,
   MarketWatch,
-} from "../../../public/assets/icons/icons";
+} from "../../../../public/assets/icons/icons";
 
 export function MediaBanner() {
   return (

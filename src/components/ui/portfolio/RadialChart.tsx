@@ -10,13 +10,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui/landingPage/card";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
   type ChartConfig,
-} from "@/components/ui/chart";
+} from "@/components/ui/landingPage/chart";
 interface Asset {
   name: string;
   percentage: number;
@@ -30,7 +30,7 @@ const assets: Asset[] = [
 ];
 export const description = "A radial chart with stacked sections";
 
-const chartData = [{ month: "january", desktop: 1260, mobile: 570 }];
+const chartData = [{ month: "january", desktop: 10, mobile: 15,phone:30 }];
 
 const chartConfig = {
   desktop: {
@@ -41,27 +41,32 @@ const chartConfig = {
     label: "Mobile",
     color: "var(--chart-2)",
   },
+  phone: {
+    label: "phone",
+    color: "var(--chart-3)",
+  },
 } satisfies ChartConfig;
 
 export function ChartRadialStacked() {
   const totalVisitors = chartData[0].desktop + chartData[0].mobile;
 
   return (
-    <div>
-      <Card className="flex flex-col">
-        <CardHeader className="items-center pb-0">
+    <div className="w-[400px] max-w-lg">
+      <Card className="flex">
+        <CardHeader className=" ">
           <CardTitle> PORTFOLIO VALUE $</CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-1 items-center pb-0">
+        <CardContent className="p-0 m-0">
           <ChartContainer
             config={chartConfig}
-            className="mx-auto aspect-square w-full max-w-[250px]"
+            className=""
           >
             <RadialBarChart
               data={chartData}
               endAngle={180}
-              innerRadius={80}
+              innerRadius={90}
               outerRadius={130}
+              className=""
             >
               <ChartTooltip
                 cursor={false}
@@ -96,26 +101,35 @@ export function ChartRadialStacked() {
               <RadialBar
                 dataKey="desktop"
                 stackId="a"
-                cornerRadius={5}
-                fill="var(--color-desktop)"
-                className="stroke-transparent stroke-2"
+                cornerRadius={10}
+                fill="#00A3FF"
+                className=""
               />
               <RadialBar
                 dataKey="mobile"
-                fill="var(--color-mobile)"
                 stackId="a"
-                cornerRadius={5}
-                className="stroke-transparent stroke-2"
+                cornerRadius={10}
+                fill="#20E19F"
+                className=""
+              />
+              <RadialBar
+                dataKey="phone"
+                fill="#9945FF"
+                stackId="a"
+                cornerRadius={10}
+                className=""
               />
             </RadialBarChart>
           </ChartContainer>
         </CardContent>
-        <CardFooter className="bor">
-         
-          <div className="space-y-4 border w-full">
+        <CardFooter>
+          <div className="space-y-4 w-full">
             {assets.map((asset) => (
-              <div key={asset.name} className="flex items-center justify-between">
-                <div className="flex items-center gap-3 flex-1">
+              <div
+                key={asset.name}
+                className="flex items-center justify-between"
+              >
+                <div className="flex items-center gap-3 ">
                   <div
                     className="w-1 h-8 rounded-full"
                     style={{ backgroundColor: asset.color }}
@@ -130,10 +144,6 @@ export function ChartRadialStacked() {
               </div>
             ))}
           </div>
-         
-          {/* <div className="text-muted-foreground leading-none">
-            Showing total visitors for the last 6 months
-          </div> */}
         </CardFooter>
       </Card>
     </div>

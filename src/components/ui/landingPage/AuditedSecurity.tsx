@@ -1,12 +1,11 @@
 "use client";
 
-import { Shield, CheckCircle2, Zap, Users } from "lucide-react";
-import Box1 from "./../../../public/assets/icons/box1.png";
-import Box2 from "./../../../public/assets/icons/box2.png";
-import Box3 from "./../../../public/assets/icons/box3.png";
-import Box4 from "./../../../public/assets/icons/box4.png";
+import Box1 from "./../../../../public/assets/icons/box1.png";
+import Box2 from "./../../../../public/assets/icons/box2.png";
+import Box3 from "./../../../../public/assets/icons/box3.png";
+import Box4 from "./../../../../public/assets/icons/box4.png";
 import Image from "next/image";
-import auditImg from "./../../../public/assets/AuditedImg.png";
+import auditImg from "./../../../../public/assets/AuditedImg.png";
 import React from "react";
 export function AuditedSecurity() {
   return (
@@ -83,9 +82,8 @@ export function AuditedSecurity() {
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white font-semibold z-20">
                     Cyberscope
                   </div>
-                  
                 </div>
-              </div>.
+              </div>
             </div>
           </div>
         </div>

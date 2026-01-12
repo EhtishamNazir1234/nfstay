@@ -2,8 +2,8 @@
 
 import { CheckCircle, Star, Zap } from "lucide-react";
 import Image from "next/image";
-import img from "./../../../public/assets/HITImg.png";
-import { Gem, Crown, shop } from "../../../public/assets/icons/icons";
+import img from "./../../../../public/assets/HITImg.png";
+import { Gem, Crown, shop } from "../../../../public/assets/icons/icons";
 export function HowItWorks() {
   const features = [
     {
