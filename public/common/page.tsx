@@ -21,11 +21,11 @@ export default function HomeNav() {
         <NavItems
           className="text-white"
           items={[
-            { name: "Dashboard", link: "#" },
-            { name: "Printer", link: "#" },
-            { name: "Farm", link: "#" },
-            { name: "MarketPlace", link: "#" },
-            { name: "Migrate", link: "#" },
+            { name: "Dashboard", link: "/dashboard" },
+            { name: "Printer", link: "/printer" },
+            { name: "Farm", link: "/farm" },
+            { name: "MarketPlace", link: "/marketplace" },
+            { name: "Migrate", link: "/migrate" },
             { name: "Portfolio", link: "/portfolio" },
           ]}
           

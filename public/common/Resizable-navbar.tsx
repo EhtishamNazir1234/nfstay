@@ -10,6 +10,7 @@ import {
 
 import React, { useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -120,7 +121,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
       )}
     >
       {items.map((item, idx) => (
-        <a
+        <Link
           key={`link-${idx}`}
           href={item.link}
           onMouseEnter={() => setHovered(idx)}
@@ -138,7 +139,7 @@ export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
           <span className="relative z-20 hover:text-zinc-900 transition-colors">
             {item.name}
           </span>
-        </a>
+        </Link>
       ))}
     </motion.div>
   );
@@ -216,12 +217,12 @@ export const MobileNavMenu = ({
 
 export const NavbarLogo = () => {
   return (
-    <a  
+    <Link  
     href="/"
     className="relative z-20 flex items-center py-1 px-15 text-sm text-black"
     >
     <Image src={logo} alt="logo" width={150} height={150} />
-    </a>
+    </Link>
   );
 };
 

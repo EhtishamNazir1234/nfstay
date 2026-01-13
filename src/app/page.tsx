@@ -16,7 +16,6 @@ import { Carousel } from "@/components/ui/landingPage/Carousall";
 import { AuditedSecurity } from "@/components/ui/landingPage/AuditedSecurity";
 import { FAQ } from "@/components/ui/landingPage/FAQ";
 import { MarketplaceBlog } from "@/components/ui/landingPage/MarketPlaceBlog";
-import { ModeToggle } from "@/components/ModeToggle";
 
 const PROPERTIES = [
   {
