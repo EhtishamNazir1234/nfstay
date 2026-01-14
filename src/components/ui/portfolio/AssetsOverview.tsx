@@ -89,8 +89,8 @@ export default function AssetsOverview({
             <div className="flex items-center">
               <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full ">
                 <div
-                  className="h-full bg-gray-900 dark:bg-gray-300 rounded-full transition-all duration-300"
-                  style={{ width: `${asset.percentage}%` }}
+                  className="h-full bg-gray-900 dark:bg-gray-300 rounded-full transition-all duration-300 w-[var(--width)]"
+                  style={{ "--width": `${asset.percentage}%` } as React.CSSProperties & { '--width': string }}
                 />
               </div>
               <span className="text-xs font-semibold text-gray-600 dark:text-gray-300 w-10 text-right">

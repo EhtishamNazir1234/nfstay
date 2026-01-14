@@ -131,8 +131,8 @@ export function ChartRadialStacked() {
               >
                 <div className="flex items-center gap-3 ">
                   <div
-                    className="w-1 h-8 rounded-full"
-                    style={{ backgroundColor: asset.color }}
+                    className="w-1 h-8 rounded-full bg-[var(--asset-color)]"
+                    style={{ "--asset-color": asset.color } as React.CSSProperties & { '--asset-color': string }}
                   ></div>
                   <span className="text-slate-600 dark:text-gray-300 font-medium">
                     {asset.name}

@@ -102,7 +102,7 @@ export function Carousel() {
                     className={`relative transition-all duration-300 ${isCenterCard}`}
                   >
                     <div className="aspect-[3/4] rounded-3xl overflow-hidden ">
-                      {/* Image */}
+                     
                       <div className="aspect-[3/4]">
                         <Image
                           src={member.image}

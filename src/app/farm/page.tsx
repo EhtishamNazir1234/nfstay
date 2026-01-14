@@ -6,6 +6,7 @@ import { TrendingUp, Calendar, DollarSign } from "lucide-react";
 import StartEarning from "@/components/ui/farm/StartEarning";
 import StayEarned from "@/components/ui/farm/StayEarned";
 import MintStayCard from "@/components/ui/farm/MintStayCard";
+import MintCard from "@/components/ui/dashboard/MintCard";
 
 const stats = [
   {
@@ -29,7 +30,7 @@ export default function FarmPage() {
   return (
     <div className="min-h-screen bg-[#f5f6fa] dark:bg-[#0b0f1a] text-gray-900 dark:text-gray-100">
       <AppNav />
-      
+
       {/* Header Section */}
       <header className="relative w-full bg-gradient-to-br from-[#2b165a] via-[#1b2a4e] to-[#0f3d3e] pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -69,29 +70,27 @@ export default function FarmPage() {
             {/* Left Column */}
             <div className="space-y-6">
               <StartEarning />
-              <MintStayCard
-                title="Mint STAY with DEBIT CARD"
-                payingLabel="You're Buying"
-                payingToken="STAY"
-                receivingLabel="You're Paying"
-                receivingToken="EURO"
+              <MintCard
+                title="Mint ROCK with DEBIT CARD"
+                payingLabel="You're Paying"
+                payingToken="EURO"
+                receivingLabel="You're Buying"
+                receivingToken="ROCKS"
                 buttonText="Mint Now"
                 showCardIcons={true}
-                isDarkCard={true}
               />
             </div>
 
             {/* Right Column */}
             <div className="space-y-6">
               <StayEarned />
-              <MintStayCard
+              <MintCard
                 title="Mint STAY with USDC"
                 payingLabel="You're Paying"
-                payingToken="STAY"
+                payingToken="ROCKS"
                 receivingLabel="To Receive"
                 receivingToken="USDC"
                 buttonText="Mint Now"
-                isDarkCard={true}
               />
             </div>
           </div>
