@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpDown, ChevronDown} from "lucide-react";
+import { ArrowUpDown, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import {
   EuroLogo,
@@ -83,7 +83,7 @@ export default function MintCard({
         isWhiteCard
           ? "bg-white border border-gray-200"
           : "bg-white/10 dark:bg-[#1a1f2e]/8 dark:border-gray-700"
-      } rounded-[11px] shadow-xl w-full max-w-[585px] h-auto min-h-[377px] relative overflow-hidden p-10 flex flex-col justify-between`}
+      } rounded-[11px] shadow-xl w-full  min-h-[377px] relative overflow-hidden p-10 flex flex-col justify-between`}
     >
       {/* Background Image */}
       {!isWhiteCard && (
@@ -114,13 +114,13 @@ export default function MintCard({
 
       {/* Overlay */}
       {!isWhiteCard && (
-        <div className="absolute inset-0 z-[1] bg-black/50 dark:bg-black/60 rounded-[11px]"></div>
+        <div className="absolute inset-0 bg-black/50 dark:bg-black/60"></div>
       )}
 
       {/* Content */}
       <div className="relative z-10 flex flex-col justify-between h-full">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8 w-full max-w-[505px] h-[23px]">
+        <div className="flex items-center justify-between mb-8 w-full ">
           <h3
             className={`text-xl font-bold ${
               isWhiteCard ? "text-gray-800" : "text-white"
@@ -134,8 +134,22 @@ export default function MintCard({
         {/* Input Cards Section */}
         <div className="flex flex-col sm:flex-row items-center mb-8 gap-4 w-full max-w-[505px] min-h-[165px] justify-between">
           {/* Left Card - You're Paying */}
-          <div className={`${isWhiteCard ? 'bg-cyan-50' : 'bg-white/5 dark:bg-gray-800/30 backdrop-blur-sm'} rounded-lg p-5 ${isWhiteCard ? 'border border-cyan-200' : 'border border-white/10 dark:border-gray-700/50'} flex-1`}>
-            <label className={`text-xs mb-3 block font-bold ${isWhiteCard ? 'text-gray-700' : 'text-white dark:text-gray-400'}`}>
+          <div
+            className={`${
+              isWhiteCard
+                ? "bg-cyan-50"
+                : "bg-white/5 dark:bg-gray-800/30 backdrop-blur-sm"
+            } rounded-lg p-5 ${
+              isWhiteCard
+                ? "border border-cyan-200"
+                : "border border-white/10 dark:border-gray-700/50"
+            } flex-1`}
+          >
+            <label
+              className={`text-xs mb-3 block font-bold ${
+                isWhiteCard ? "text-gray-700" : "text-white dark:text-gray-400"
+              }`}
+            >
               {payingLabel}
             </label>
             <input
@@ -143,9 +157,19 @@ export default function MintCard({
               value={payingAmount}
               onChange={(e) => setPayingAmount(e.target.value)}
               placeholder="0.00"
-              className={`w-full bg-transparent text-4xl font-semibold mb-4 focus:outline-none ${isWhiteCard ? 'text-gray-400 placeholder:text-gray-400' : 'text-gray-400 dark:text-gray-300 placeholder:text-gray-700'}`}
+              className={`w-full bg-transparent text-4xl font-semibold mb-4 focus:outline-none ${
+                isWhiteCard
+                  ? "text-gray-400 placeholder:text-gray-400"
+                  : "text-gray-400 dark:text-gray-300 placeholder:text-gray-700"
+              }`}
             />
-            <button className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors w-full ${isWhiteCard ? 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50' : 'bg-white/5 dark:bg-gray-700/30 border-white/10 dark:border-gray-600/50 text-white hover:bg-white/10 dark:hover:bg-gray-700/50'}`}>
+            <button
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors w-full ${
+                isWhiteCard
+                  ? "bg-white border-gray-200 text-gray-700 hover:bg-gray-50"
+                  : "bg-white/5 dark:bg-gray-700/30 border-white/10 dark:border-gray-600/50 text-white hover:bg-white/10 dark:hover:bg-gray-700/50"
+              }`}
+            >
               {getTokenIcon(payingToken)}
               <span className="text-sm">{payingToken}</span>
               <ChevronDown className="w-4 h-4 ml-auto" />
@@ -168,8 +192,22 @@ export default function MintCard({
           )}
 
           {/* Right Card - To Receive */}
-          <div className={`${isWhiteCard ? 'bg-purple-100' : 'bg-white/5 dark:bg-gray-800/30 backdrop-blur-sm'} rounded-lg p-5 ${isWhiteCard ? 'border border-purple-200' : 'border border-white/10 dark:border-gray-700/50'} flex-1`}>
-            <label className={`text-xs mb-3 block ${isWhiteCard ? 'text-gray-700' : 'text-white dark:text-gray-400'}`}>
+          <div
+            className={`${
+              isWhiteCard
+                ? "bg-purple-100"
+                : "bg-white/5 dark:bg-gray-800/30 backdrop-blur-sm"
+            } rounded-lg p-5 ${
+              isWhiteCard
+                ? "border border-purple-200"
+                : "border border-white/10 dark:border-gray-700/50"
+            } flex-1`}
+          >
+            <label
+              className={`text-xs mb-3 block ${
+                isWhiteCard ? "text-gray-700" : "text-white dark:text-gray-400"
+              }`}
+            >
               {receivingLabel}
             </label>
             <input
@@ -177,9 +215,19 @@ export default function MintCard({
               value={receivingAmount}
               onChange={(e) => setReceivingAmount(e.target.value)}
               placeholder="0.00"
-              className={`w-full bg-transparent text-4xl font-semibold mb-4 focus:outline-none ${isWhiteCard ? 'text-gray-400 placeholder:text-gray-400' : 'text-gray-400 dark:text-gray-300 placeholder:text-gray-500'}`}
+              className={`w-full bg-transparent text-4xl font-semibold mb-4 focus:outline-none ${
+                isWhiteCard
+                  ? "text-gray-400 placeholder:text-gray-400"
+                  : "text-gray-400 dark:text-gray-300 placeholder:text-gray-500"
+              }`}
             />
-            <button className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors w-full ${isWhiteCard ? 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50' : 'bg-white/5 dark:bg-gray-700/30 border-white/10 dark:border-gray-600/50 text-white hover:bg-white/10 dark:hover:bg-gray-700/50'}`}>
+            <button
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors w-full ${
+                isWhiteCard
+                  ? "bg-white border-gray-200 text-gray-700 hover:bg-gray-50"
+                  : "bg-white/5 dark:bg-gray-700/30 border-white/10 dark:border-gray-600/50 text-white hover:bg-white/10 dark:hover:bg-gray-700/50"
+              }`}
+            >
               {getTokenIcon(receivingToken)}
               <span className="text-sm">{receivingToken}</span>
               {isWhiteCard && <ChevronDown className="w-4 h-4 ml-auto" />}
@@ -188,7 +236,13 @@ export default function MintCard({
         </div>
 
         {/* Mint/Swap Button */}
-        <button className={`w-full px-6 py-3 rounded-lg text-white text-lg transition-opacity shadow-lg ${isWhiteCard ? 'bg-gradient-to-r from-[#9945FF] to-[#7C3AED] hover:opacity-90' : 'bg-[#9945FF] hover:bg-[#8531EB]'}`}>
+        <button
+          className={`w-full px-6 py-3 rounded-lg text-white text-lg transition-opacity shadow-lg ${
+            isWhiteCard
+              ? "bg-gradient-to-r from-[#9945FF] to-[#7C3AED] hover:opacity-90"
+              : "bg-[#9945FF] hover:bg-[#8531EB]"
+          }`}
+        >
           {buttonText}
         </button>
       </div>

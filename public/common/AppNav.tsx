@@ -32,14 +32,13 @@ export default function AppNav({ className }: AppNavProps) {
 
   return (
     <nav className={cn("fixed top-0 left-0 right-0 z-50", className)}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex justify-center">
         <div 
           className={cn(
-            "flex h-16 items-center justify-between rounded-2xl backdrop-blur-md border border-white/30 dark:border-purple-500/40 px-4 py-2 mt-4 transition-all duration-300",
+            "w-[1200px] flex h-16 items-center justify-between rounded-2xl backdrop-blur-md border border-white/30 dark:border-purple-500/40 px-4 py-2 mt-4 transition-all duration-300",
             scrolled && (theme === "light" || !theme) && "bg-black",
             scrolled && theme === "dark" && "bg-gradient-to-r from-[#9945FF] to-[#20E19F]"
           )}
-          style={{ minWidth: "800px", width: "100%" }}
         >
           {/* Logo Section */}
           <Link href="/" className="relative z-20 flex items-center py-1 px-15 text-sm">

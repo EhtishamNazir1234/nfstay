@@ -172,7 +172,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Incinerator Section */}
-          <div className="mb-8">
+          <div className="mb-8 mt-30">
             <Incinerator />
           </div>
 

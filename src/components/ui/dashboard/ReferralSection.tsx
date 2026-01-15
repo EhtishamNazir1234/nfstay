@@ -171,15 +171,15 @@ export default function ReferralPage() {
         </p>
 
         {/* Referral link and copy button */}
-        <div className="flex flex-col items-center justify-center gap-3 mb-4 sm:mb-6 lg:mb-8 w-full max-w-2xl px-4">
-          <div className="border-[2px] border-dashed border-purple-400 rounded-lg px-4 sm:px-6 py-3 bg-purple-50 w-full">
-            <p className="text-purple-700 font-semibold text-xs sm:text-sm break-all text-center">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-3 mb-4 sm:mb-6 lg:mb-8 w-full max-w-xl px-20">
+          <div className="border-[2px] border-dashed border-purple-400 rounded-lg px-3 sm:px-4 py-3 bg-purple-50 w-full lg:flex-1">
+            <p className="text-purple-700 font-semibold text-xs break-all text-center lg:text-left">
               {referralLink}
             </p>
           </div>
           <button
             onClick={handleCopy}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors w-full"
+            className="bg-purple-600 hover:bg-purple-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors w-full lg:w-auto text-xs sm:text-sm"
           >
             <CopyIcon />
             {copied ? "Copied!" : "Copy"}
