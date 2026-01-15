@@ -55,7 +55,7 @@ const stats = [
 
 export default function DashboardPage() {
   return (
-    <div className="bg-[#f5f6fa] dark:bg-[#0b0f1a] text-gray-900 dark:text-gray-100">
+    <div className="bg-[#f5f6fa] pb-30 dark:bg-[#0b0f1a] text-gray-900 dark:text-gray-100">
       <AppNav />
       
       {/* Header Section */}
@@ -122,15 +122,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Middle Row: Feature Cards */}
-          <div 
-            className="flex mb-8 relative z-10"
-            style={{
-              width: '1200px',
-              height: '509px',
-              justifyContent: 'space-between',
-              gap: '22px'
-            }}
-          >
+          <div className="flex flex-col lg:flex-row mb-8 relative z-10 w-full max-w-[1200px] h-auto lg:h-[509px] justify-between gap-6 lg:gap-[22px]">
             <FeatureCard
               title="Printer"
               badgeText="Unclaimed Rewards: $500"

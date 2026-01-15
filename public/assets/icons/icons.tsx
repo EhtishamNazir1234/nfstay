@@ -477,3 +477,107 @@ export function EuroLogo({ className, ...props }: WalletIconProps) {
     </svg>
   );
 }
+export function FireIcon({ className, ...props }: WalletIconProps) {
+  return (
+    <svg
+      width="314"
+      height="519"
+      viewBox="0 0 314 519"
+      fill="none"
+      className={cn("text-white transition-colors", className)}
+      {...props}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g filter="url(#filter0_dddd_194_293)">
+        <path d="M121.255 93.6H192.164V22.6909H121.255V93.6Z" fill="white" />
+      </g>
+      <defs>
+        <filter
+          id="filter0_dddd_194_293"
+          x="0.000335693"
+          y="9.53674e-06"
+          width="313.418"
+          height="518.345"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="19.1455" />
+          <feGaussianBlur stdDeviation="20.9182" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_194_293"
+          />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="75.8727" />
+          <feGaussianBlur stdDeviation="37.9364" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="effect1_dropShadow_194_293"
+            result="effect2_dropShadow_194_293"
+          />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="170.891" />
+          <feGaussianBlur stdDeviation="51.0545" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="effect2_dropShadow_194_293"
+            result="effect3_dropShadow_194_293"
+          />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dy="303.491" />
+          <feGaussianBlur stdDeviation="60.6273" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.01 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="effect3_dropShadow_194_293"
+            result="effect4_dropShadow_194_293"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect4_dropShadow_194_293"
+            result="shape"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+}

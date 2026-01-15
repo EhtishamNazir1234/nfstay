@@ -83,13 +83,7 @@ export default function MintCard({
         isWhiteCard
           ? "bg-white border border-gray-200"
           : "bg-white/10 dark:bg-[#1a1f2e]/8 dark:border-gray-700"
-      } rounded-[11px] shadow-xl w-full max-w-[585px] h-auto min-h-[377px] relative overflow-hidden`}
-      style={{
-        padding: "40px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
+      } rounded-[11px] shadow-xl w-full max-w-[585px] h-auto min-h-[377px] relative overflow-hidden p-10 flex flex-col justify-between`}
     >
       {/* Background Image */}
       {!isWhiteCard && (
@@ -124,19 +118,9 @@ export default function MintCard({
       )}
 
       {/* Content */}
-      <div
-        className="relative z-10 flex flex-col"
-        style={{ justifyContent: "space-between", height: "100%" }}
-      >
+      <div className="relative z-10 flex flex-col justify-between h-full">
         {/* Header */}
-        <div
-          className="flex items-center justify-between mb-8"
-          style={{
-            width: "505px",
-            height: "23px",
-            justifyContent: "space-between",
-          }}
-        >
+        <div className="flex items-center justify-between mb-8 w-full max-w-[505px] h-[23px]">
           <h3
             className={`text-xl font-bold ${
               isWhiteCard ? "text-gray-800" : "text-white"
@@ -148,14 +132,7 @@ export default function MintCard({
         </div>
 
         {/* Input Cards Section */}
-        <div
-          className="flex items-center mb-8 gap-4"
-          style={{
-            width: "505px",
-            height: "165px",
-            justifyContent: "space-between",
-          }}
-        >
+        <div className="flex flex-col sm:flex-row items-center mb-8 gap-4 w-full max-w-[505px] min-h-[165px] justify-between">
           {/* Left Card - You're Paying */}
           <div className={`${isWhiteCard ? 'bg-cyan-50' : 'bg-white/5 dark:bg-gray-800/30 backdrop-blur-sm'} rounded-lg p-5 ${isWhiteCard ? 'border border-cyan-200' : 'border border-white/10 dark:border-gray-700/50'} flex-1`}>
             <label className={`text-xs mb-3 block font-bold ${isWhiteCard ? 'text-gray-700' : 'text-white dark:text-gray-400'}`}>
@@ -180,7 +157,7 @@ export default function MintCard({
             <div className="relative z-10 flex-shrink-0">
               <div className="w-10 h-10 rounded-full bg-gradient-to-b from-[#20E19F] to-[#9945FF] p-[2px]">
                 <button className="w-full h-full rounded-full bg-white flex items-center justify-center transition-colors shadow-lg">
-                  <ArrowUpDown className="w-5 h-5 scale-x-[-1] rotate-90" style={{ background: 'linear-gradient(to bottom, #20E19F, #9945FF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }} />
+                  <ArrowUpDown className="w-5 h-5 scale-x-[-1] rotate-90 bg-gradient-to-b from-[#20E19F] to-[#9945FF] bg-clip-text text-transparent" />
                 </button>
               </div>
             </div>

@@ -1,6 +1,8 @@
 "use client";
 
+import { MoreHorizontal } from "lucide-react";
 import Image from "next/image";
+import { FireIcon } from "../../../../public/assets/icons/icons";
 
 const burnData = [
   {
@@ -39,82 +41,84 @@ const burnData = [
     status: "Burned",
   },
 ];
+interface Claim {
+  id: number;
+  source: string;
+  date: string;
+  time: string;
+  amount: string;
+  status: "Burned";
+}
+
+const SAMPLE_CLAIMS: Claim[] = [
+  {
+    id: 1,
+    source: "Boardroom",
+    date: "11 Dec, 2024",
+    time: "9:26 PM",
+    amount: "8.75 MyUSD",
+    status: "Burned",
+  },
+  {
+    id: 2,
+    source: "Boardroom",
+    date: "11 Dec, 2024",
+    time: "9:26 PM",
+    amount: "8.75 MyUSD",
+    status: "Burned",
+  },
+  {
+    id: 3,
+    source: "Farm",
+    date: "11 Dec, 2024",
+    time: "9:26 PM",
+    amount: "8.75 MyUSD",
+    status: "Burned",
+  },
+  {
+    id: 4,
+    source: "STAYking",
+    date: "11 Dec, 2024",
+    time: "9:26 PM",
+    amount: "8.75 MyUSD",
+    status: "Burned",
+  },
+  {
+    id: 5,
+    source: "Boardroom",
+    date: "11 Dec, 2024",
+    time: "9:26 PM",
+    amount: "8.75 MyUSD",
+    status: "Burned",
+  },
+];
+const getStatusColor = (status: string) => {
+  switch (status) {
+    case "Claimed":
+      return "bg-purple-100 text-purple-500";
+    case "Pending":
+      return "bg-yellow-100 text-yellow-700";
+    case "Rejected":
+      return "bg-red-100 text-red-700";
+    default:
+      return "bg-gray-100 text-gray-700";
+  }
+};
 
 export default function Incinerator() {
   return (
-    <div className="relative overflow-hidden flex flex-col w-[1200px] h-[687px] rounded-[28px] opacity-100">
-    
-    
+    <div className="relative overflow-hidden mt-8 lg:mt-[35px] flex flex-col w-full max-w-[1200px] h-auto min-h-[687px] rounded-[28px] opacity-100 mx-auto">
+      {/* Top Border Gradient */}
 
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#2b165a] via-[#1b2a4e] to-[#0f3d3e] rounded-[28px]" />
-
-      {/* Fire Icons - 6 positions */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-[28px]">
-        {/* 1st: In the main area, left of numbers (inside glassmorphism card) - handled below */}
-        
-        {/* 2nd: Half behind the main container of tokens burned */}
-        <div className="absolute top-[50%] right-[20%] -translate-y-1/2 z-[5] opacity-50">
-          <Image
-            src="/assets/fire.png"
-            alt="Fire"
-            width={80}
-            height={130}
-            className="object-contain"
-          />
-        </div>
-
-        {/* 3rd: On the top mid */}
-        <div className="absolute top-[5%] left-1/2 -translate-x-1/2 z-[5] opacity-60">
-          <Image
-            src="/assets/fire.png"
-            alt="Fire"
-            width={60}
-            height={98}
-            className="object-contain"
-          />
-        </div>
-
-        {/* 4th: In the right bottom corner behind it */}
-        <div className="absolute bottom-[10%] right-[5%] z-[5] opacity-50">
-          <Image
-            src="/assets/fire.png"
-            alt="Fire"
-            width={70}
-            height={114}
-            className="object-contain"
-          />
-        </div>
-
-        {/* 5th: Besides the right top corner */}
-        <div className="absolute top-[8%] right-[8%] z-[5] opacity-60">
-          <Image
-            src="/assets/fire.png"
-            alt="Fire"
-            width={65}
-            height={106}
-            className="object-contain"
-          />
-        </div>
-
-        {/* 6th: Beside the right bottom corner */}
-        <div className="absolute bottom-[12%] right-[12%] z-[5] opacity-50">
-          <Image
-            src="/assets/fire.png"
-            alt="Fire"
-            width={60}
-            height={98}
-            className="object-contain"
-          />
-        </div>
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#1b2a4e] to-[#0f3d3e]" />
 
       {/* Top Section - Content Container */}
-      <div className="relative flex-1 flex items-center justify-between px-12 py-8">
+      <div className="relative flex-1 flex flex-col lg:flex-row items-center justify-between px-6 sm:px-12 py-8 pt-15">
         {/* Left Section - Text and Button */}
-        <div className="flex flex-col justify-center z-10 max-w-[500px]">
-          <h2 className="text-5xl font-bold text-white mb-6">Incinerator</h2>
-          <p className="text-white text-base mb-8 leading-relaxed max-w-[400px]">
+        <div className="flex flex-col justify-center z-10 w-full lg:max-w-[500px] mb-6 lg:mb-0">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 lg:mb-6">Incinerator</h2>
+          <p className="text-white text-sm sm:text-base mb-6 lg:mb-8 leading-relaxed w-full lg:max-w-[400px]">
             Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit. Nunc At
             Orci Ac Mauris Rutrum Placerat.
           </p>
@@ -127,24 +131,25 @@ export default function Incinerator() {
           </div>
         </div>
 
-        {/* Right Section - Glassmorphism Card with 1st Fire Icon */}
-        <div className="relative z-10">
-          <div className="relative rounded-2xl p-10 bg-white/[0.08] backdrop-blur-[25px] border border-white/15 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
-            <div className="flex items-center gap-4 mb-3">
-              <div className="w-12 h-12 flex-shrink-0 relative">
+        {/* Right Section - Glassmorphism Card */}
+        <div className="relative z-10 w-full lg:w-auto">
+          <div className="relative rounded-2xl p-6 sm:p-8 lg:p-10 bg-white/[0.08] backdrop-blur-[25px] border border-white/15 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+            <div className="flex items-center gap-2 sm:gap-4 mb-3">
+              {/* 1st: In the main glassmorphism card, to the left of numbers */}
+              <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex-shrink-0">
                 <Image
                   src="/assets/fire.png"
-                  alt="Fire"
+                  alt="fire"
                   width={48}
-                  height={78}
-                  className="object-contain"
+                  height={48}
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-6xl font-bold text-white tracking-tight">
+              <span className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white tracking-tight">
                 1,833,234
               </span>
             </div>
-            <div className="text-gray-300 text-lg font-medium ml-16">
+            <div className="text-gray-300 text-sm sm:text-base lg:text-lg font-medium ml-8 sm:ml-12 lg:ml-16">
               Tokens Burned
             </div>
           </div>
@@ -152,49 +157,55 @@ export default function Incinerator() {
       </div>
 
       {/* Bottom Section - Transaction Table */}
-      <div className="relative z-10 px-12 pb-8">
-        <div className="rounded-xl overflow-hidden bg-white/[0.05] backdrop-blur-[10px] border border-white/10">
-          <table className="w-full">
+      <div className="relative px-4 sm:px-6 lg:px-12 pb-8 lg:pb-16 z-10">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[600px]">
+            <colgroup>
+              <col className="w-12" />
+              <col />
+              <col />
+              <col />
+              <col />
+            </colgroup>
             <thead>
-              <tr className="bg-white/[0.08] border-b border-white/10">
-                <th className="px-6 py-4 text-left text-sm font-semibold text-white">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs text-gray-300 bg-white/10 backdrop-blur-[10px] rounded-tl-lg rounded-bl-lg">
                   #
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-white">
+                <th className="px-6 py-3 text-left text-sm text-gray-300 bg-white/10 backdrop-blur-[10px]">
                   Source
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-white">
+                <th className="px-6 py-3 text-left text-sm text-gray-300 bg-white/10 backdrop-blur-[10px]">
                   Date
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-white">
+                <th className="px-6 py-3 text-left text-sm text-gray-300 bg-white/10 backdrop-blur-[10px]">
                   Amount
                 </th>
-                <th className="px-6 py-4 text-left text-sm font-semibold text-white">
+                <th className="px-6 py-3 text-left text-sm text-gray-300 bg-white/10 backdrop-blur-[10px] rounded-tr-lg rounded-br-lg">
                   Status
                 </th>
               </tr>
             </thead>
             <tbody>
-              {burnData.map((row) => (
+              {SAMPLE_CLAIMS.map((claim, index) => (
                 <tr
-                  key={row.id}
-                  className={`border-b border-white/5 last:border-0 ${
-                    row.id % 2 === 0 ? "bg-white/[0.02]" : "bg-transparent"
-                  }`}
+                  key={claim.id}
+                  className="border-b border-white/5 last:border-0 bg-transparent"
                 >
-                  <td className="px-6 py-4 text-sm text-white/90">{row.id}</td>
-                  <td className="px-6 py-4 text-sm text-white/90">
-                    {row.source}
+                  <td className="px-6 py-2 text-white text-xs">{index + 1}</td>
+                  <td className="px-6 py-2 text-sm text-white">
+                    {claim.source}
                   </td>
-                  <td className="px-6 py-4 text-sm text-white/90">
-                    {row.date}
+                  <td className="px-6 py-2 text-sm text-white">
+                    <span>{claim.date}</span>
+                    <span className="text-white/70">{` - ${claim.time}`}</span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-white/90">
-                    {row.amount}
+                  <td className="px-6 py-2 text-sm text-white">
+                    {claim.amount}
                   </td>
-                  <td className="px-6 py-4">
-                    <span className="inline-block px-3 py-1 rounded-full text-white text-xs font-semibold bg-[#FF6B35]">
-                      {row.status}
+                  <td className="px-6 py-2">
+                    <span className="inline-block px-4 py-2 rounded-full text-white text-xs bg-gradient-to-r from-[#FF8C42] to-[#FF6B35]">
+                      {claim.status}
                     </span>
                   </td>
                 </tr>
