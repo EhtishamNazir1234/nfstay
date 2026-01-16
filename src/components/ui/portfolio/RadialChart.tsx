@@ -1,12 +1,10 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
 import { Label, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
 
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -17,6 +15,7 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/components/ui/landingPage/chart";
+
 interface Asset {
   name: string;
   percentage: number;
@@ -28,44 +27,48 @@ const assets: Asset[] = [
   { name: "LP Tokens", percentage: 25, color: "#20E19F" },
   { name: "Stay", percentage: 22, color: "#00A3FF" },
 ];
+
 export const description = "A radial chart with stacked sections";
 
-const chartData = [{ month: "january", desktop: 10, mobile: 15,phone:30 }];
+// Chart data representing the percentages: Rocks 53%, LP Tokens 25%, Stay 22%
+const chartData = [{ rocks: 53, lpTokens: 25, stay: 22 }];
 
 const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "var(--chart-1)",
+  rocks: {
+    label: "Rocks",
+    color: "#9945FF",
   },
-  mobile: {
-    label: "Mobile",
-    color: "var(--chart-2)",
+  lpTokens: {
+    label: "LP Tokens",
+    color: "#20E19F",
   },
-  phone: {
-    label: "phone",
-    color: "var(--chart-3)",
+  stay: {
+    label: "Stay",
+    color: "#00A3FF",
   },
 } satisfies ChartConfig;
 
 export function ChartRadialStacked() {
-  const totalVisitors = chartData[0].desktop + chartData[0].mobile;
+  const totalAssets = 3; // Total number of assets
 
   return (
-    <div className="w-[400px] max-w-lg">
-      <Card className="flex">
-        <CardHeader className=" ">
-          <CardTitle> PORTFOLIO VALUE $</CardTitle>
+    <div className="w-full lg:w-[310px] h-auto lg:h-[443px]">
+      <Card className="flex flex-col border-0 shadow-none bg-white dark:bg-[#071022] h-full rounded-[11px] border border-gray-200 dark:border-gray-700 p-4 sm:p-6 lg:p-[30px] gap-[10px]">
+        <CardHeader className="p-0 pb-0 flex-shrink-0">
+          <CardTitle className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 dark:text-white uppercase">
+            PORTFOLIO VALUE <span className="text-slate-900 dark:text-white">$</span>
+          </CardTitle>
         </CardHeader>
-        <CardContent className="p-0 m-0">
+        <CardContent className="p-0 m-0 flex-1 flex items-center justify-center min-h-0 overflow-visible pt-4">
           <ChartContainer
             config={chartConfig}
-            className=""
+            className="h-[150px] sm:h-[180px] lg:h-[200px] w-full"
           >
             <RadialBarChart
               data={chartData}
               endAngle={180}
-              innerRadius={90}
-              outerRadius={130}
+              innerRadius={60}
+              outerRadius={85}
               className=""
             >
               <ChartTooltip
@@ -80,15 +83,15 @@ export function ChartRadialStacked() {
                         <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle">
                           <tspan
                             x={viewBox.cx}
-                            y={(viewBox.cy || 0) - 16}
-                            className="fill-foreground text-2xl font-bold"
+                            y={(viewBox.cy || 0) - 12}
+                            className="fill-slate-900 dark:fill-white text-xl sm:text-2xl font-bold"
                           >
-                            {totalVisitors.toLocaleString()}
+                            {String(totalAssets).padStart(2, '0')}
                           </tspan>
                           <tspan
                             x={viewBox.cx}
                             y={(viewBox.cy || 0) + 4}
-                            className="fill-muted-foreground"
+                            className="fill-gray-500 dark:fill-gray-400 text-xs sm:text-sm"
                           >
                             Total Assets
                           </tspan>
@@ -99,46 +102,46 @@ export function ChartRadialStacked() {
                 />
               </PolarRadiusAxis>
               <RadialBar
-                dataKey="desktop"
+                dataKey="rocks"
                 stackId="a"
                 cornerRadius={10}
-                fill="#00A3FF"
+                fill="#9945FF"
                 className=""
               />
               <RadialBar
-                dataKey="mobile"
+                dataKey="lpTokens"
                 stackId="a"
                 cornerRadius={10}
                 fill="#20E19F"
                 className=""
               />
               <RadialBar
-                dataKey="phone"
-                fill="#9945FF"
+                dataKey="stay"
                 stackId="a"
                 cornerRadius={10}
+                fill="#00A3FF"
                 className=""
               />
             </RadialBarChart>
           </ChartContainer>
         </CardContent>
-        <CardFooter>
-          <div className="space-y-4 w-full">
+        <CardFooter className="p-0 pt-0 flex-shrink-0">
+          <div className="space-y-2 w-full">
             {assets.map((asset) => (
               <div
                 key={asset.name}
-                className="flex items-center justify-between"
+                className="flex items-center justify-between py-1"
               >
-                <div className="flex items-center gap-3 ">
+                <div className="flex items-center gap-2">
                   <div
-                    className="w-1 h-8 rounded-full bg-[var(--asset-color)]"
-                    style={{ "--asset-color": asset.color } as React.CSSProperties & { '--asset-color': string }}
+                    className="w-1 h-6 rounded-full"
+                    style={{ backgroundColor: asset.color }}
                   ></div>
-                  <span className="text-slate-600 dark:text-gray-300 font-medium">
+                  <span className="text-gray-600 dark:text-gray-400 font-medium">
                     {asset.name}
                   </span>
                 </div>
-                <span className="text-slate-900 dark:text-gray-100 font-bold">
+                <span className="text-gray-600 dark:text-gray-400 font-medium">
                   {asset.percentage}%
                 </span>
               </div>

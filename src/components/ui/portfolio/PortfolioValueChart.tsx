@@ -116,7 +116,7 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 import { useState } from "react";
-import { LineChart, Line, XAxis, CartesianGrid } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid } from "recharts";
 
 export default function PortfolioTracker() {
   const [activeChart, setActiveChart] =
@@ -135,39 +135,29 @@ export default function PortfolioTracker() {
   const change = 3745;
   const changePercent = 4.0;
 
+  // Format currency for Y-axis
+  const formatYAxisCurrency = (value: number) => {
+    if (value >= 1000) {
+      return `$${(value / 1000).toFixed(0)}K`;
+    }
+    return `$${value}`;
+  };
+
+  // Calculate max value for Y-axis domain
+  const maxValue = Math.max(...chartData.map(d => d.mobile));
+  const yAxisMax = Math.ceil(maxValue / 100) * 100; // Round up to nearest 100
+
   return (
-    <div className="w-full max-w-6xl bg-white dark:bg-[#071022] rounded-2xl p-8">
+    <div className="w-full lg:w-[870px] h-auto lg:h-[443px] bg-white dark:bg-[#071022] rounded-[11px] border border-gray-200 dark:border-gray-700 p-4 sm:p-6 lg:p-[30px] flex flex-col gap-[10px]">
       {/* Header */}
-      <div className="flex items-start justify-between mb-8">
-        <div>
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-sm font-semibold text-slate-600 dark:text-gray-300">
-              STAY VALUE
-            </span>
-            <div className="flex items-center py-1 rounded-full">
-              <span className="text-green-700 font-semibold">●</span>
-              <span className="text-green-700 font-semibold text-sm">
-                +${change.toLocaleString()}
-              </span>
-            </div>
-            <span className="text-gray-400 dark:text-white"> •</span>
-            <span className="text-purple-700"> {changePercent}%</span>
-          </div>
-          <div className="flex items-baseline gap-2">
-            <span className="text-5xl font-bold text-slate-900 dark:text-gray-100">
-              $
-              {currentValue.toLocaleString("en-US", {
-                minimumFractionDigits: 2,
-              })}
-            </span>
-          </div>
-        </div>
-        <div className="flex gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+      <div className="flex flex-col sm:flex-row items-start justify-between flex-shrink-0 gap-4">
+        {/* Time Period Selector - Top on Mobile, Right on Desktop */}
+        <div className="flex gap-1 sm:gap-2 bg-slate-100 dark:bg-slate-800 p-1 rounded-lg w-full sm:w-auto order-1 sm:order-2 justify-center sm:justify-start">
           {["24H", "7D", "30D", "1Y", "ALL"].map((period) => (
             <button
               key={period}
               onClick={() => setTimePeriod(period)}
-              className={`px-3 py-1 text-sm rounded transition-all ${
+              className={`flex-1 sm:flex-none px-2 sm:px-3 py-1 text-xs sm:text-sm rounded transition-all ${
                 timePeriod === period
                   ? "bg-purple-500 text-white"
                   : "text-gray-400 dark:text-gray-300 hover:text-slate-800"
@@ -177,12 +167,41 @@ export default function PortfolioTracker() {
             </button>
           ))}
         </div>
+        
+        {/* Value Section - Below on Mobile, Left on Desktop */}
+        <div className="order-2 sm:order-1 w-full sm:w-auto">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+            <span className="text-xs sm:text-sm font-semibold text-slate-600 dark:text-gray-300">
+              STAY VALUE
+            </span>
+            <div className="flex items-center py-1 rounded-full gap-1">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 18.3333C14.6024 18.3333 18.3333 14.6024 18.3333 9.99999C18.3333 5.39762 14.6024 1.66666 10 1.66666C5.39763 1.66666 1.66667 5.39762 1.66667 9.99999C1.66667 14.6024 5.39763 18.3333 10 18.3333Z" fill="#008D00" stroke="#008D00" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M13.3333 9.99999L10 6.66666L6.66667 9.99999" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M10 13.3333V6.66666" stroke="white" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span className="text-green-700 font-semibold text-sm">
+                +${change.toLocaleString()}
+              </span>
+            </div>
+            <span className="text-gray-400 dark:text-white"> •</span>
+            <span className="text-purple-700"> {changePercent}%</span>
+          </div>
+          <div className="flex items-baseline gap-1 sm:gap-2">
+            <span className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#A0A3AA]">$</span>
+            <span className="text-2xl sm:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-gray-100">
+              {currentValue.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+              })}
+            </span>
+          </div>
+        </div>
       </div>
-      <Card className="">
-        <CardContent className="px-2 sm:p-6">
+      <Card className="border-0 shadow-none flex-1 flex flex-col">
+        <CardContent className="p-0 flex-1">
           <ChartContainer
             config={chartConfig}
-            className="aspect-auto h-[250px] w-full"
+            className="aspect-auto h-[200px] sm:h-[250px] w-full [&_.recharts-xAxis]:hidden sm:[&_.recharts-xAxis]:block"
           >
             <LineChart
               accessibilityLayer
@@ -206,6 +225,14 @@ export default function PortfolioTracker() {
                     day: "numeric",
                   });
                 }}
+              />
+              <YAxis
+                tickLine={false}
+                axisLine={false}
+                tickMargin={12}
+                tick={{ fill: "#6b7280", fontSize: 12 }}
+                tickFormatter={formatYAxisCurrency}
+                domain={[0, yAxisMax]}
               />
               <ChartTooltip
                 content={

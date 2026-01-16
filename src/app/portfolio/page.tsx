@@ -12,16 +12,18 @@ const page = () => {
       <div className="relative w-full min-h-[500px] bg-gradient-to-br from-[#2b165a] via-[#1b2a4e] to-[#0f3d3e] pt-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_60%)]" />
       </div>
-      <div className="relative pb-30 -mt-54">
-        <div className="flex border border justify-between mx-30 border h-full ">
-          <PortfolioTracker />
-          <ChartRadialStacked />
-        </div>
+      <div className="relative -mt-54 pb-12 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl flex justify-center">
+          <div className="w-full max-w-[1200px]">
+            <div className="flex flex-col lg:flex-row gap-6 mb-6">
+              <PortfolioTracker />
+              <ChartRadialStacked />
+            </div>
 
-        <div className="flex border m-10 space-x-15 items-center">
-          <ClaimHistory />
-          <div className="mt-5">
-            <AssetsOverview />
+            <div className="flex flex-col lg:flex-row gap-6 items-start">
+              <ClaimHistory />
+              <AssetsOverview />
+            </div>
           </div>
         </div>
       </div>
