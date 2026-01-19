@@ -4,19 +4,19 @@ import rect from "./../../../../public/assets/Rectanglle.png";
 
 export function JourneySection() {
   return (
-    <section className="w-full overflow-hidden bg-gradient-to-br from-[#ecfdf9] via-white to-[#20E19F] px-6">
+    <section className="w-full overflow-hidden bg-gradient-to-br from-[#ecfdf9] via-white to-[#20E19F] dark:from-[#0b0f1a] dark:via-[#0b0f1a] dark:to-[#1a2e4a] px-6">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           <div className="flex flex-col gap-10">
             <div className="space-y-6">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight text-gray-900 dark:text-gray-100">
                 Our Journey Of <br />
                 Growth
                 <span className="ml-2 bg-gradient-to-r from-[#9945FF] to-[#20E19F] bg-clip-text text-transparent">
                   Since 2021
                 </span>
               </h2>
-              <p className="max-w-[520px] text-lg text-[#5e626d] leading-relaxed">
+              <p className="max-w-[520px] text-lg text-[#5e626d] dark:text-gray-300 leading-relaxed">
                 From London To Liverpool And Manchester, NFSTay Has Rapidly
                 Grown, Now Featuring Over 120 Properties. Join Us As We Chart A
                 New Course In The Travel Industry.

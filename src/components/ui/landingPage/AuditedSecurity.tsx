@@ -9,7 +9,7 @@ import auditImg from "./../../../../public/assets/AuditedImg.png";
 import React from "react";
 export function AuditedSecurity() {
   return (
-    <section className="py-20 px-6 bg-white">
+    <section className="py-20 px-6 bg-white dark:bg-[#0b0f1a]">
       <div className="max-w-7xl mx-auto">
         <div className="relative overflow-hidden rounded-4xl border border-white/10">
           <div className="absolute inset-0 bg-gradient-to-t from-[#1b0f2e] via-[#0c1f3c] to-[#063a3a]" />

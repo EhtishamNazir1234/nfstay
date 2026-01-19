@@ -103,7 +103,7 @@ export default function ListedNFTs() {
         </div>
       </div>
       {!listedNftsToggle && (
-        <div className="absolute inset-0 backdrop-blur-sm border border-white/30 dark:border-purple-500/40 rounded-[11px] pointer-events-none z-10" />
+        <div className="absolute inset-0 backdrop-blur-[1px] bg-white/10 dark:bg-black/10 border border-white/10 dark:border-purple-500/20 rounded-[11px] pointer-events-none z-10" />
       )}
     </div>
   );

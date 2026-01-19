@@ -4,59 +4,7 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
 import Image from "next/image";
 import img from "./../../../public/assets/VrImg.png";
-
-interface TeamMember {
-  id: number;
-  name: string;
-  role: string;
-  image: string;
-  linkedinUrl?: string;
-}
-
-const teamMembers: TeamMember[] = [
-  {
-    id: 1,
-    name: "João Souza",
-    role: "Founder",
-    image: "/assets/VrImg.png",
-    linkedinUrl: "https://linkedin.com",
-  },
-  {
-    id: 2,
-    name: "Valéria Alves",
-    role: "General Manager",
-    image: "/assets/VrImg.png",
-    linkedinUrl: "https://linkedin.com",
-  },
-  {
-    id: 3,
-    name: "Hugo Souza",
-    role: "Co-Founder",
-    image: "/assets/VrImg.png",
-    linkedinUrl: "https://linkedin.com",
-  },
-  {
-    id: 4,
-    name: "Valéria Alves",
-    role: "General Manager",
-    image: "/assets/VrImg.png",
-    linkedinUrl: "https://linkedin.com",
-  },
-  {
-    id: 5,
-    name: "Hugo Souza",
-    role: "Co-Founder",
-    image: "/assets/VrImg.png",
-    linkedinUrl: "https://linkedin.com",
-  },
-  {
-    id: 6,
-    name: "João Souza",
-    role: "Founder",
-    image: "/assets/VrImg.png",
-    linkedinUrl: "https://linkedin.com",
-  },
-];
+import { teamMembers } from "@/data/dummy";
 
 export function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0);

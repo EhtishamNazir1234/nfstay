@@ -7,58 +7,7 @@ import {
   ChevronRight,
   MoreHorizontal,
 } from "lucide-react";
-
-interface Claim {
-  id: number;
-  source: string;
-  date: string;
-  time: string;
-  amount: string;
-  status: "Claimed" | "Pending" | "Rejected";
-}
-
-const SAMPLE_CLAIMS: Claim[] = [
-  {
-    id: 1,
-    source: "Boardroom",
-    date: "11 Dec, 2024",
-    time: "9:26 PM",
-    amount: "8.75 MyUSD",
-    status: "Claimed",
-  },
-  {
-    id: 2,
-    source: "Boardroom",
-    date: "11 Dec, 2024",
-    time: "9:26 PM",
-    amount: "8.75 MyUSD",
-    status: "Claimed",
-  },
-  {
-    id: 3,
-    source: "Farm",
-    date: "11 Dec, 2024",
-    time: "9:26 PM",
-    amount: "8.75 MyUSD",
-    status: "Claimed",
-  },
-  {
-    id: 4,
-    source: "STAYking",
-    date: "11 Dec, 2024",
-    time: "9:26 PM",
-    amount: "8.75 MyUSD",
-    status: "Claimed",
-  },
-  {
-    id: 5,
-    source: "Boardroom",
-    date: "11 Dec, 2024",
-    time: "9:26 PM",
-    amount: "8.75 MyUSD",
-    status: "Claimed",
-  },
-];
+import { claimHistoryData as SAMPLE_CLAIMS } from "@/data/dummy";
 
 export default function ClaimHistory() {
   const [currentPage, setCurrentPage] = useState(1);

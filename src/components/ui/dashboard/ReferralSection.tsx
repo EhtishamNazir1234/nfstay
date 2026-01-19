@@ -65,11 +65,8 @@ export default function ReferralPage() {
 
   return (
     <div className="relative w-full max-w-[1196px] h-auto min-h-[425px] rounded-2xl bg-white opacity-100 mx-auto overflow-hidden">
-      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white rounded-2xl" />
 
-      {/* Decorative garage images - Left side stacked */}
-      {/* Top-left */}
       <div className="hidden lg:block absolute top-[17px] left-[16px]">
         <Image
           src="/assets/icons/garageImg.png"
@@ -80,7 +77,6 @@ export default function ReferralPage() {
         />
       </div>
 
-      {/* Mid-left */}
       <div className="hidden lg:block absolute top-[206px] left-[-5px]">
         <Image
           src="/assets/icons/garageImg.png"
@@ -91,7 +87,6 @@ export default function ReferralPage() {
         />
       </div>
 
-      {/* Bottom-left - Large (1/3 emerged down) */}
       <div className="hidden lg:block absolute bottom-[-67px] left-20">
         <Image
           src="/assets/icons/garageImg.png"
@@ -102,7 +97,6 @@ export default function ReferralPage() {
         />
       </div>
 
-      {/* Top-right - Small */}
       <div className="hidden lg:block absolute top-5  right-35">
         <Image
           src="/assets/icons/garageImg.png"
@@ -113,7 +107,6 @@ export default function ReferralPage() {
         />
       </div>
 
-      {/* Mid-right - Large */}
       <div className="hidden lg:block absolute top-25 -right-4 -translate-y-1/2">
         <Image
           src="/assets/icons/garageImg.png"
@@ -133,7 +126,6 @@ export default function ReferralPage() {
         />
       </div>
 
-      {/* Bottom-right - Large */}
       <div className="hidden lg:block absolute -bottom-20 right-7">
         <Image
           src="/assets/icons/garageImg.png"
@@ -144,9 +136,7 @@ export default function ReferralPage() {
         />
       </div>
 
-      {/* Center - Main content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 sm:px-6 lg:px-12 py-8">
-        {/* Social proof - Multi profiles image and joined count */}
         <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
           <Image
             src="/assets/multiProfiles.png"
@@ -160,17 +150,14 @@ export default function ReferralPage() {
           </span>
         </div>
 
-        {/* Heading */}
         <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 text-center px-4">
           Invite Your Friends To Join
         </h1>
 
-        {/* Subheading */}
         <p className="text-sm sm:text-base lg:text-lg text-gray-500 mb-6 sm:mb-8 text-center px-4">
           NFsTay And Earn $25 Per NFT They Purchase
         </p>
 
-        {/* Referral link and copy button */}
         <div className="flex flex-col lg:flex-row items-center justify-center gap-3 mb-4 sm:mb-6 lg:mb-8 w-full max-w-xl px-20">
           <div className="border-[2px] border-dashed border-purple-400 rounded-lg px-3 sm:px-4 py-3 bg-purple-50 w-full lg:flex-1">
             <p className="text-purple-700 font-semibold text-xs break-all text-center lg:text-left">
@@ -186,9 +173,10 @@ export default function ReferralPage() {
           </button>
         </div>
 
-        {/* Social share buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 px-4 w-full">
-          <span className="text-gray-700 font-semibold text-base sm:text-lg mb-1 sm:mb-0">Share It:</span>
+          <span className="text-gray-700 font-semibold text-base sm:text-lg mb-1 sm:mb-0">
+            Share It:
+          </span>
           <div className="flex items-center justify-center gap-2 sm:gap-3">
             <button className="border-2 border-gray-300 hover:bg-gray-50 text-gray-700 px-2 sm:px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 bg-transparent transition-colors whitespace-nowrap">
               <FacebookIcon />

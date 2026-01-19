@@ -15,23 +15,9 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@/components/ui/landingPage/chart";
-
-interface Asset {
-  name: string;
-  percentage: number;
-  color: string;
-}
-
-const assets: Asset[] = [
-  { name: "Rocks", percentage: 53, color: "#9945FF" },
-  { name: "LP Tokens", percentage: 25, color: "#20E19F" },
-  { name: "Stay", percentage: 22, color: "#00A3FF" },
-];
+import { radialChartAssets as assets, radialChartData as chartData } from "@/data/dummy";
 
 export const description = "A radial chart with stacked sections";
-
-// Chart data representing the percentages: Rocks 53%, LP Tokens 25%, Stay 22%
-const chartData = [{ rocks: 53, lpTokens: 25, stay: 22 }];
 
 const chartConfig = {
   rocks: {

@@ -81,9 +81,9 @@ export default function MintCard({
     <div
       className={`${
         isWhiteCard
-          ? "bg-white border border-gray-200"
+          ? "bg-white dark:bg-[#1a1f2e] border border-gray-200 dark:border-gray-700"
           : "bg-white/10 dark:bg-[#1a1f2e]/8 dark:border-gray-700"
-      } rounded-[11px] shadow-xl w-full  min-h-[377px] relative overflow-hidden p-10 flex flex-col justify-between`}
+      } rounded-[11px] shadow-xl w-full min-h-[354px] relative overflow-hidden p-[25px] flex flex-col justify-between`}
     >
       {/* Background Image */}
       {!isWhiteCard && (
@@ -112,18 +112,15 @@ export default function MintCard({
         </>
       )}
 
-      {/* Overlay */}
       {!isWhiteCard && (
         <div className="absolute inset-0 bg-black/50 dark:bg-black/60"></div>
       )}
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col justify-between h-full">
-        {/* Header */}
         <div className="flex items-center justify-between mb-8 w-full ">
           <h3
             className={`text-xl font-bold ${
-              isWhiteCard ? "text-gray-800" : "text-white"
+              isWhiteCard ? "text-gray-800 dark:text-white" : "text-white"
             }`}
           >
             {title}
@@ -131,23 +128,23 @@ export default function MintCard({
           {showCardIcons && <PaymentLogos />}
         </div>
 
-        {/* Input Cards Section */}
-        <div className="flex flex-col sm:flex-row items-center mb-8 gap-4 w-full max-w-[505px] min-h-[165px] justify-between">
-          {/* Left Card - You're Paying */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center mb-8 gap-4 w-full">
           <div
             className={`${
               isWhiteCard
-                ? "bg-cyan-50"
+                ? "bg-cyan-50 dark:bg-gray-800/30"
                 : "bg-white/5 dark:bg-gray-800/30 backdrop-blur-sm"
             } rounded-lg p-5 ${
               isWhiteCard
-                ? "border border-cyan-200"
+                ? "border border-cyan-200 dark:border-gray-700/50"
                 : "border border-white/10 dark:border-gray-700/50"
-            } flex-1`}
+            } flex-1 min-w-0`}
           >
             <label
               className={`text-xs mb-3 block font-bold ${
-                isWhiteCard ? "text-gray-700" : "text-white dark:text-gray-400"
+                isWhiteCard
+                  ? "text-gray-700 dark:text-gray-300"
+                  : "text-white dark:text-gray-400"
               }`}
             >
               {payingLabel}
@@ -159,7 +156,7 @@ export default function MintCard({
               placeholder="0.00"
               className={`w-full bg-transparent text-4xl font-semibold mb-4 focus:outline-none ${
                 isWhiteCard
-                  ? "text-gray-400 placeholder:text-gray-400"
+                  ? "text-gray-400 dark:text-gray-300 placeholder:text-gray-400 dark:placeholder:text-gray-500"
                   : "text-gray-400 dark:text-gray-300 placeholder:text-gray-700"
               }`}
             />
@@ -176,9 +173,8 @@ export default function MintCard({
             </button>
           </div>
 
-          {/* Swap Icon */}
           {isWhiteCard ? (
-            <div className="relative z-10 flex-shrink-0">
+            <div className="relative z-10 flex-shrink-0 self-center">
               <div className="w-10 h-10 rounded-full bg-gradient-to-b from-[#20E19F] to-[#9945FF] p-[2px]">
                 <button className="w-full h-full rounded-full bg-white flex items-center justify-center transition-colors shadow-lg">
                   <ArrowUpDown className="w-5 h-5 scale-x-[-1] rotate-90 bg-gradient-to-b from-[#20E19F] to-[#9945FF] bg-clip-text text-transparent" />
@@ -186,26 +182,27 @@ export default function MintCard({
               </div>
             </div>
           ) : (
-            <button className="w-10 h-10 rounded-full bg-black/80 dark:bg-gray-900/90 border-2 border-white/40 dark:border-gray-600 flex items-center justify-center transition-colors z-10 shadow-lg flex-shrink-0">
+            <button className="w-10 h-10 rounded-full bg-black/80 dark:bg-gray-900/90 border-2 border-white/40 dark:border-gray-600 flex items-center justify-center transition-colors z-10 shadow-lg flex-shrink-0 self-center">
               <ArrowUpDown className="w-5 h-5 scale-x-[-1] rotate-90 text-white" />
             </button>
           )}
 
-          {/* Right Card - To Receive */}
           <div
             className={`${
               isWhiteCard
-                ? "bg-purple-100"
+                ? "bg-purple-100 dark:bg-gray-800/30"
                 : "bg-white/5 dark:bg-gray-800/30 backdrop-blur-sm"
             } rounded-lg p-5 ${
               isWhiteCard
-                ? "border border-purple-200"
+                ? "border border-purple-200 dark:border-gray-700/50"
                 : "border border-white/10 dark:border-gray-700/50"
-            } flex-1`}
+            } flex-1 min-w-0`}
           >
             <label
               className={`text-xs mb-3 block ${
-                isWhiteCard ? "text-gray-700" : "text-white dark:text-gray-400"
+                isWhiteCard
+                  ? "text-gray-700 dark:text-gray-300"
+                  : "text-white dark:text-gray-400"
               }`}
             >
               {receivingLabel}
@@ -217,7 +214,7 @@ export default function MintCard({
               placeholder="0.00"
               className={`w-full bg-transparent text-4xl font-semibold mb-4 focus:outline-none ${
                 isWhiteCard
-                  ? "text-gray-400 placeholder:text-gray-400"
+                  ? "text-gray-400 dark:text-gray-300 placeholder:text-gray-400 dark:placeholder:text-gray-500"
                   : "text-gray-400 dark:text-gray-300 placeholder:text-gray-500"
               }`}
             />
@@ -235,7 +232,6 @@ export default function MintCard({
           </div>
         </div>
 
-        {/* Mint/Swap Button */}
         <button
           className={`w-full px-6 py-3 rounded-lg text-white text-lg transition-opacity shadow-lg ${
             isWhiteCard

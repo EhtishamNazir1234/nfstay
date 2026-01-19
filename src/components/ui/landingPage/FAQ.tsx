@@ -2,44 +2,7 @@
 
 import { useState } from "react";
 import { ChevronUp } from "lucide-react";
-
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-const faqData: FAQItem[] = [
-  {
-    question:
-      "What Percentage Of The Year Typically Goes Unused In NFsTay's Rental Properties?",
-    answer:
-      "Approximately 30% of the year's inventory goes unused in NFsStay's rental properties, presenting a significant opportunity for innovation and optimization.",
-  },
-  {
-    question:
-      "Maecenas Volutpat Metus At Felis Suscipit, A Rhoncus Turpis Faucibus.",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    question:
-      "Maecenas Volutpat Metus At Felis Suscipit, A Rhoncus Turpis Faucibus.",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    question:
-      "Maecenas Volutpat Metus At Felis Suscipit, A Rhoncus Turpis Faucibus.",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-  {
-    question:
-      "Maecenas Volutpat Metus At Felis Suscipit, A Rhoncus Turpis Faucibus.",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  },
-];
+import { faqData } from "@/data/dummy";
 
 export function FAQ() {
   const [expandedIndex, setExpandedIndex] = useState<number>(0);

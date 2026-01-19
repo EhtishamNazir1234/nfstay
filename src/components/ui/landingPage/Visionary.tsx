@@ -61,8 +61,8 @@ const roadmapData: RoadmapItem[] = [
 
 const Roadmap = (): JSX.Element => {
   return (
-    <section className="bg-gray-50 dark:bg-transparent py-20">
-      <h2 className="text-4xl font-bold  text-center mb-16">
+    <section className="bg-gray-50 dark:bg-[#0b0f1a] py-20">
+      <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 text-center mb-16">
         A Visionary
         <span className="ml-2 text-transparent bg-clip-text bg-gradient-to-r from-[#9945FF] to-[#20E19F]">
           Roadmap
@@ -84,7 +84,7 @@ const Roadmap = (): JSX.Element => {
               }`}
             >
               <p
-                className={`absolute top-1 text-xl font-semibold whitespace-nowrap ${
+                className={`absolute top-1 text-xl font-semibold whitespace-nowrap text-gray-900 dark:text-gray-100 ${
                   item.timeSide === "left"
                     ? "right-1/2 mr-25 text-right"
                     : "left-1/2 ml-8 text-left"

@@ -26,9 +26,7 @@ export function ROIIndicator({
 
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      {/* Circular Progress Container */}
-      <div className="relative w-80 h-80 flex items-center justify-center">
-        {/* Background Circle */}
+      <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 flex items-center justify-center">
         <svg className="absolute w-full h-full" viewBox="0 0 220 220">
           <circle
             cx="110"
@@ -38,7 +36,6 @@ export function ROIIndicator({
             stroke="#e5e7eb"
             strokeWidth="8"
           />
-          {/* Gradient Circle */}
           <defs>
             <linearGradient id={uniqueId} x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#20E19F" />
@@ -63,9 +60,7 @@ export function ROIIndicator({
           />
         </svg>
 
-        {/* Center Content */}
         <div className="absolute flex flex-col items-center justify-center">
-          {/* Diamond Icon */}
           <div className="mb-4">
             <svg
               width="40"
@@ -99,12 +94,10 @@ export function ROIIndicator({
             </svg>
           </div>
 
-          {/* Amount */}
           <div className="text-4xl font-bold text-purple-600 mb-2 text-center">
             {amount}
           </div>
 
-          {/* Title - Split into two lines */}
           <div className="text-xs text-gray-500 font-semibold dark:text-gray-400 text-center mb-1">
             Total ROI Based On Staking
           </div>
@@ -112,7 +105,6 @@ export function ROIIndicator({
             Period + Rock Value
           </div>
 
-          {/* Stats Row */}
           <div className="flex gap-6 mb-6 text-center">
             <div className="flex-shrink-0">
               <div className="text-lg font-semibold text-gray-900">{apr}</div>
@@ -130,7 +122,6 @@ export function ROIIndicator({
         </div>
       </div>
 
-      {/* Description */}
       <p className="text-xs text-gray-600 text-center mt-3 max-w-sm leading-relaxed">
         {description}
       </p>
@@ -156,7 +147,6 @@ const SliderHandle = () => (
       stroke="white"
       strokeWidth="2"
     />
-    {/* Inner lines - positioned to center the 11x11 inner SVG in the 28x22 outer SVG */}
     <g transform="translate(8.5, 5.5)">
       <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
         <path
@@ -227,24 +217,19 @@ export default function TestDriveRockMarketplace() {
   const [stakingPeriod, setStakingPeriod] = useState(12);
   const [boostedApr, setBoostedApr] = useState(true);
 
-  // Calculate values based on inputs
   const calculations = useMemo(() => {
     const baseApr = boostedApr ? 36.4 : 25.0;
     const annualRate = baseApr / 100;
     const totalMonths = stakingPeriod;
 
-    // Calculate rock value
     const rockValue = numberOfRocks * priceOfRocks;
 
-    // Calculate total returns over staking period
     const monthlyRate = annualRate / 12;
     const totalReturns = rockValue * monthlyRate * totalMonths;
     const totalRoi = rockValue + totalReturns;
 
-    // Monthly returns
     const monthlyReturns = rockValue * monthlyRate;
 
-    // Progress percentage for radial graph (based on staking period out of 36 months max)
     const progressPercent = Math.min((stakingPeriod / 36) * 100, 100);
 
     return {
@@ -257,13 +242,13 @@ export default function TestDriveRockMarketplace() {
   }, [numberOfRocks, priceOfRocks, stakingPeriod, boostedApr]);
 
   return (
-    <div className="bg-white dark:bg-[#1a1f2e] w-[1200px]  h-[556px] opacity-100 rounded-[11px] border border-gray-200 dark:border-gray-700 pt-[39px] pr-[40px] pb-[39px] pl-[40px] overflow-hidden">
-      <div className="w-full h-full p-5">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+    <div className="bg-white dark:bg-[#1a1f2e] w-full min-h-[492px] opacity-100 rounded-[11px] border border-gray-200 dark:border-gray-700 pt-[29px] pr-10 pb-[29px] pl-10 overflow-hidden">
+      <div className="w-full h-full">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+          <h2 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white">
             Test Drive Your ROCK
           </h2>
-          <div className="flex items-center pl-4 w-[170px] h-[22px]">
+          <div className="flex items-center pl-0 lg:pl-4 w-full sm:w-[170px] h-[22px]">
             <BoostedAPRIcon />
             <span className="text-sm font-medium bg-gradient-to-r from-[#9945FF] to-[#20E19F] bg-clip-text text-transparent">
               Boosted APR
@@ -285,16 +270,13 @@ export default function TestDriveRockMarketplace() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[40px]">
-          {/* Left Section - Inputs */}
-          <div className="space-y-2">
-            {/* Number Of ROCKS Slider */}
-            <div className="min-w-[650px] h-[99px] opacity-100 flex flex-col space-y-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-[40px]">
+          <div className="space-y-2 w-full">
+            <div className="w-full min-h-[99px] opacity-100 flex flex-col space-y-6 lg:space-y-10">
               <label className="text-lg font-semibold text-gray-700 dark:text-gray-300">
                 Number of ROCKS
               </label>
               <div className="relative top-3">
-                {/* Min/Max labels at same level as value bubble */}
                 <div className="absolute -top-9 left-0 right-0 flex justify-between text-sm font-semibold text-gray-400 dark:text-gray-400 pointer-events-none">
                   <span>0</span>
                   <span>10,000</span>
@@ -314,14 +296,12 @@ export default function TestDriveRockMarketplace() {
                     }%, #e5e7eb 100%)`,
                   }}
                 />
-                {/* Custom SVG Handle */}
                 <div
                   className="absolute  -translate-x-1/2 -top-0 pointer-events-none"
                   style={{ left: `${(numberOfRocks / 10000) * 100}%` }}
                 >
                   <SliderHandle />
                 </div>
-                {/* Value bubble with caret */}
                 <div
                   className="absolute -top-10 transform -translate-x-1/2 "
                   style={{ left: `${(numberOfRocks / 10000) * 100}%` }}
@@ -330,7 +310,6 @@ export default function TestDriveRockMarketplace() {
                     <div className="px-3 py-1.5 rounded-sm bg-gradient-to-r from-[#9945FF] to-[#20E19F] text-white text-sm font-semibold whitespace-nowrap shadow-lg">
                       {numberOfRocks.toLocaleString()}
                     </div>
-                    {/* Downward caret */}
                     <div className="absolute left-1/2 transform -translate-x-1/2 -mt-[1px]">
                       <svg
                         width="12"
@@ -362,13 +341,11 @@ export default function TestDriveRockMarketplace() {
               </div>
             </div>
 
-            {/* Price Of ROCKS Slider */}
-            <div className="min-w-[650px] h-[99px] opacity-100 flex flex-col space-y-10">
+            <div className="w-full min-h-[99px] opacity-100 flex flex-col space-y-6 lg:space-y-10">
               <label className="text-lg font-semibold text-gray-700 dark:text-gray-300">
                 Price of ROCKS
               </label>
               <div className="relative top-3">
-                {/* Min/Max labels at same level as value bubble */}
                 <div className="absolute -top-9 left-0 right-0 flex justify-between text-sm font-semibold text-gray-400 dark:text-gray-400 pointer-events-none">
                   <span>$0</span>
                   <span>$10,000</span>
@@ -388,14 +365,12 @@ export default function TestDriveRockMarketplace() {
                     }%, #e5e7eb 100%)`,
                   }}
                 />
-                {/* Custom SVG Handle */}
                 <div
-                  className="absolute -translate-x-1/2 -top-0 pointer-events-none"
+                  className="absolute -translate-x-1/2 pointer-events-none"
                   style={{ left: `${(priceOfRocks / 10000) * 100}%` }}
                 >
                   <SliderHandle />
                 </div>
-                {/* Value bubble with caret */}
                 <div
                   className="absolute -top-10 transform -translate-x-1/2"
                   style={{ left: `${(priceOfRocks / 10000) * 100}%` }}
@@ -404,7 +379,6 @@ export default function TestDriveRockMarketplace() {
                     <div className="px-3 py-1.5 rounded-sm bg-gradient-to-r from-[#9945FF] to-[#20E19F] text-white text-sm font-semibold whitespace-nowrap shadow-lg">
                       ${priceOfRocks.toLocaleString()}
                     </div>
-                    {/* Downward caret */}
                     <div className="absolute left-1/2 transform -translate-x-1/2 -mt-[1px]">
                       <svg
                         width="12"
@@ -436,13 +410,11 @@ export default function TestDriveRockMarketplace() {
               </div>
             </div>
 
-            {/* Price Of STAY Slider */}
-            <div className="min-w-[650px] h-[99px] opacity-100 flex flex-col space-y-10">
+            <div className="w-full min-h-[99px] opacity-100 flex flex-col space-y-6 lg:space-y-10">
               <label className="text-lg font-semibold text-gray-700 dark:text-gray-300">
                 Price of STAY
               </label>
               <div className="relative top-3">
-                {/* Min/Max labels at same level as value bubble */}
                 <div className="absolute -top-9 left-0 right-0 flex justify-between text-sm font-semibold text-gray-400 dark:text-gray-400 pointer-events-none">
                   <span>$0</span>
                   <span>$10,000</span>
@@ -460,14 +432,12 @@ export default function TestDriveRockMarketplace() {
                     }%, #e5e7eb ${(priceOfStay / 10000) * 100}%, #e5e7eb 100%)`,
                   }}
                 />
-                {/* Custom SVG Handle */}
                 <div
                   className="absolute -translate-x-1/2 -top-0 pointer-events-none"
                   style={{ left: `${(priceOfStay / 10000) * 100}%` }}
                 >
                   <SliderHandle />
                 </div>
-                {/* Value bubble with caret */}
                 <div
                   className="absolute -top-10 transform -translate-x-1/2"
                   style={{ left: `${(priceOfStay / 10000) * 100}%` }}
@@ -476,7 +446,6 @@ export default function TestDriveRockMarketplace() {
                     <div className="px-3 py-1.5 rounded-sm bg-gradient-to-r from-[#9945FF] to-[#20E19F] text-white text-sm font-semibold whitespace-nowrap shadow-lg">
                       ${priceOfStay.toLocaleString()}
                     </div>
-                    {/* Downward caret */}
                     <div className="absolute left-1/2 transform -translate-x-1/2 -mt-[1px]">
                       <svg
                         width="12"
@@ -508,7 +477,6 @@ export default function TestDriveRockMarketplace() {
               </div>
             </div>
 
-            {/* Staking Period */}
             <div className="flex flex-col gap-[15px]">
               <label className="text-lg font-semibold text-gray-700 dark:text-gray-300">
                 Staking Period
@@ -534,8 +502,7 @@ export default function TestDriveRockMarketplace() {
             </div>
           </div>
 
-          {/* Right Section - Radial Graph */}
-          <div className="w-[279px] h-[372px] opacity-100 flex flex-col items-center justify-center ml-65">
+          <div className="w-full lg:w-[279px] min-h-[372px] opacity-100 flex flex-col items-center justify-center lg:ml-0 mx-auto lg:mx-0">
             <ROIIndicator
               amount={`$${Math.round(calculations.totalRoi).toLocaleString()}`}
               title="Total ROI Based On Staking Period + Rock Value"
