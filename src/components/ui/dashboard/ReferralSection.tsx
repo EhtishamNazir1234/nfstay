@@ -150,7 +150,7 @@ export default function ReferralPage() {
           </span>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 text-center px-4">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 w-3/4 sm:mb-4 text-center px-4">
           Invite Your Friends To Join
         </h1>
 
@@ -158,7 +158,7 @@ export default function ReferralPage() {
           NFsTay And Earn $25 Per NFT They Purchase
         </p>
 
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-3 mb-4 sm:mb-6 lg:mb-8 w-full max-w-xl px-20">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-3 mb-4 sm:mb-6 lg:mb-8 w-full max-w-xl lg:px-20">
           <div className="border-[2px] border-dashed border-purple-400 rounded-lg px-3 sm:px-4 py-3 bg-purple-50 w-full lg:flex-1">
             <p className="text-purple-700 font-semibold text-xs break-all text-center lg:text-left">
               {referralLink}

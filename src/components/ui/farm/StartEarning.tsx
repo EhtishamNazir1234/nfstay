@@ -49,18 +49,18 @@ export default function StartEarning() {
             </p>
           </div>
           <div className="space-y-2 sm:space-y-0">
-            <div className="relative">
-              <input
-                type="text"
-                value={liquidityAmount}
-                onChange={(e) => setLiquidityAmount(e.target.value)}
+          <div className="relative">
+            <input
+              type="text"
+              value={liquidityAmount}
+              onChange={(e) => setLiquidityAmount(e.target.value)}
                 placeholder="0.0"
                 className="w-full px-3 sm:px-4 py-3 sm:py-4 pr-[80px] sm:pr-[280px] rounded-lg bg-[#F1F4F9] text-sm sm:text-base text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#9945FF]"
-              />
+            />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-1.5 sm:gap-2 items-center">
-                <div className="p-[2px] rounded-lg bg-gradient-to-r from-[#9945FF] to-[#20E19F]">
+              <div className="p-[2px] rounded-lg bg-gradient-to-r from-[#9945FF] to-[#20E19F]">
                   <button className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-white dark:bg-[#0b0f1a] text-gray-700 dark:text-gray-300 text-xs sm:text-sm font-medium hover:bg-gray-50 dark:hover:bg-[#1a1f2e] transition-colors whitespace-nowrap">
-                    MAX
+                  MAX
                   </button>
                 </div>
                 <button className="hidden sm:block px-6 py-2.5 rounded-lg bg-[#9945FF] hover:bg-white hover:text-black text-white font-semibold transition-colors whitespace-nowrap">
@@ -91,18 +91,18 @@ export default function StartEarning() {
             </p>
           </div>
           <div className="space-y-2 sm:space-y-0">
-            <div className="relative">
-              <input
-                type="text"
-                value={stakedRocks}
-                onChange={(e) => setStakedRocks(e.target.value)}
+          <div className="relative">
+            <input
+              type="text"
+              value={stakedRocks}
+              onChange={(e) => setStakedRocks(e.target.value)}
                 placeholder="0.0"
                 className="w-full px-3 sm:px-4 py-3 sm:py-4 pr-[80px] sm:pr-[320px] rounded-lg bg-[#F1F4F9] text-sm sm:text-base text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#9945FF]"
-              />
+            />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex gap-1.5 sm:gap-2 items-center">
-                <div className="p-[2px] rounded-lg bg-gradient-to-r from-[#9945FF] to-[#20E19F]">
+              <div className="p-[2px] rounded-lg bg-gradient-to-r from-[#9945FF] to-[#20E19F]">
                   <button className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-white dark:bg-[#0b0f1a] text-gray-700 dark:text-gray-300 text-xs sm:text-sm font-medium hover:bg-gray-50 dark:hover:bg-[#1a1f2e] transition-colors whitespace-nowrap">
-                    MAX
+                  MAX
                   </button>
                 </div>
                 <button className="hidden sm:block px-4 py-2.5 rounded-lg bg-[#9945FF] hover:bg-white hover:text-black text-white font-semibold transition-colors whitespace-nowrap">

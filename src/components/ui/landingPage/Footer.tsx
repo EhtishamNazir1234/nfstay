@@ -112,7 +112,7 @@ export function Footer() {
               </ul>
             </div>
           </div>
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between lg:col-span-1">
             <div>
               <h4 className="mb-4 sm:mb-6 lg:mb-9 text-sm sm:text-base font-semibold">We Accept</h4>
               <ul className="space-y-3 sm:space-y-4 text-xs sm:text-sm text-gray-400">
@@ -150,7 +150,7 @@ export function Footer() {
           </div>
         </div>
         {/* Copyright for mobile - appears at the end */}
-        <div className="lg:hidden mt-8 text-center">
+        <div className="lg:hidden mt-8 text-center px-4">
           <p className="text-xs text-gray-500">
             Copyright NFStay.com. All Rights Reserved
           </p>

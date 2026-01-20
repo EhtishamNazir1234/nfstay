@@ -13,7 +13,7 @@ export default function DashboardPage() {
       <AppNav />
       
       {/* Header Section */}
-      <header className="relative w-full bg-gradient-to-br from-[#2b165a] via-[#1b2a4e] to-[#0f3d3e] pt-40 pb-60">
+      <header className="relative w-full bg-gradient-to-br from-[#2b165a] via-[#1b2a4e] to-[#0f3d3e] pt-25 md:pt-40 pb-60">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-6">
             <div>
@@ -24,7 +24,7 @@ export default function DashboardPage() {
                 WELCOME
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:w-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:w-auto">
               {stats.map(({ label, value, icon, gradient }) => (
                 <div
                   key={label}
@@ -52,7 +52,7 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      <div className="relative -mt-50 ">
+      <div className="relative -mt-65 md:-mt-50 ">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
           {/* Top Row: Two Minting Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
