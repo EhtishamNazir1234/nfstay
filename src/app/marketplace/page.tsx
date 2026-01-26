@@ -3,7 +3,7 @@
 import AppNav from "../../../public/common/AppNav";
 import { Gem } from "lucide-react";
 import TestDriveRockMarketplace from "@/components/ui/marketplace/TestDriveRockMarketplace";
-import ListedNFTs from "@/components/ui/marketplace/ListedNFTs";
+import ListedNFTsMarketplace from "@/components/ui/marketplace/ListedNFTs";
 
 export default function MarketplacePage() {
   return (
@@ -64,7 +64,7 @@ export default function MarketplacePage() {
             <TestDriveRockMarketplace />
 
             {/* Listed NFTs Section */}
-            <ListedNFTs />
+            <ListedNFTsMarketplace />
           </div>
         </div>
       </div>

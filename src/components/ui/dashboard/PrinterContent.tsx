@@ -4,17 +4,17 @@ import { useState } from "react";
 import { Rocket, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import MintCard from "@/components/ui/dashboard/MintCard";
-import TestDriveRockMarketplace from "@/components/ui/marketplace/TestDriveRockMarketplace";
+import TestDriveRock from "../../../../public/common/TestDriveRock";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AvatarCarousel } from "./AvatarCarousel";
 import { RentSaverSection } from "./RentSaverSection";
 import { StayEarnedSection } from "./StayEarnedSection";
 import { printerStats as stats } from "@/data/dummy";
+import ListedNFTs from "../../../../public/common/ListedNFTs";
 
 export default function PrinterContent() {
   const [ownedNftsToggle, setOwnedNftsToggle] = useState(true);
   const [stakedNftsToggle, setStakedNftsToggle] = useState(false);
-  const [listedNftsToggle, setListedNftsToggle] = useState(true);
 
   return (
     <>
@@ -46,7 +46,9 @@ export default function PrinterContent() {
                             <div className="text-lg font-semibold flex items-baseline gap-2">
                               {value}
                               {sub && (
-                                <span className="text-xs text-white/90">{sub}</span>
+                                <span className="text-xs text-white/90">
+                                  {sub}
+                                </span>
                               )}
                             </div>
                             <div className="text-xs text-white/80">{label}</div>
@@ -101,21 +103,21 @@ export default function PrinterContent() {
         <div className="mx-auto max-w-7xl flex justify-center px-4 sm:px-6 lg:px-8">
           <div className="w-[1200px]">
             <div className="flex flex-col lg:flex-row gap-3 lg:gap-4 mt-6">
-          <div className="w-full lg:w-[435px] flex-shrink-0">
-            <MintCard
-              title="Buy STAY"
-              payingLabel="You're Paying"
-              payingToken="USDC"
-              receivingLabel="To Receive"
-              receivingToken="STAY"
-              buttonText="Swap Now"
-              isWhiteCard={true}
-            />
-          </div>
-          
-          <div className="flex-1">
-            <TestDriveRockMarketplace />
-          </div>
+              <div className="w-full lg:w-[435px] flex-shrink-0">
+                <MintCard
+                  title="Buy STAY"
+                  payingLabel="You're Paying"
+                  payingToken="USDC"
+                  receivingLabel="To Receive"
+                  receivingToken="STAY"
+                  buttonText="Swap Now"
+                  isWhiteCard={true}
+                />
+              </div>
+
+              <div className="flex-1">
+                <TestDriveRock />
+              </div>
             </div>
           </div>
         </div>
@@ -123,73 +125,53 @@ export default function PrinterContent() {
         <div className="mx-auto max-w-7xl flex justify-center px-4 sm:px-6 lg:px-8">
           <div className="w-[1200px]">
             <div className="space-y-6 mt-6">
-          <Card className="bg-white dark:bg-[#1a1f2e] border border-gray-200 dark:border-gray-700 relative overflow-hidden">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
-                  Owned NFTs
-                </CardTitle>
-                <ToggleSwitch
-                  checked={ownedNftsToggle}
-                  onChange={setOwnedNftsToggle}
-                />
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                <NFTCard id="1234" creator="0x8...d..." price="925.0" />
-              </div>
-            </CardContent>
-            {!ownedNftsToggle && (
-              <div className="absolute inset-0 backdrop-blur-[1px] bg-white/10 dark:bg-black/10 border border-white/10 dark:border-purple-500/20 rounded-[11px] pointer-events-none z-10" />
-            )}
-          </Card>
+              <Card className="bg-white dark:bg-[#1a1f2e] border border-gray-200 dark:border-gray-700 relative overflow-hidden">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+                      Owned NFTs
+                    </CardTitle>
+                    <ToggleSwitch
+                      checked={ownedNftsToggle}
+                      onChange={setOwnedNftsToggle}
+                    />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    <NFTCard id="1234" creator="0x8...d..." price="925.0" />
+                  </div>
+                </CardContent>
+                {!ownedNftsToggle && (
+                  <div className="absolute inset-0 backdrop-blur-[1px] bg-white/10 dark:bg-black/10 border border-white/10 dark:border-purple-500/20 rounded-[11px] pointer-events-none z-10" />
+                )}
+              </Card>
 
-          <Card className="bg-white dark:bg-[#1a1f2e] border border-gray-200 dark:border-gray-700 relative overflow-hidden">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
-                  Staked NFTs
-                </CardTitle>
-                <ToggleSwitch
-                  checked={stakedNftsToggle}
-                  onChange={setStakedNftsToggle}
-                />
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                <NFTCard id="1234" creator="0x8...d..." price="925.0" />
-                <NFTCard id="1234" creator="0x8...d..." price="925.0" />
-                <NFTCard id="1254" creator="0x8...d..." price="925.0" />
-              </div>
-            </CardContent>
-            {!stakedNftsToggle && (
-              <div className="absolute inset-0 backdrop-blur-[1px] bg-white/10 dark:bg-black/10 border border-white/10 dark:border-purple-500/20 rounded-[11px] pointer-events-none z-10" />
-            )}
-          </Card>
+              <Card className="bg-white dark:bg-[#1a1f2e] border border-gray-200 dark:border-gray-700 relative overflow-hidden">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+                      Staked NFTs
+                    </CardTitle>
+                    <ToggleSwitch
+                      checked={stakedNftsToggle}
+                      onChange={setStakedNftsToggle}
+                    />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                    <NFTCard id="1234" creator="0x8...d..." price="925.0" />
+                    <NFTCard id="1234" creator="0x8...d..." price="925.0" />
+                    <NFTCard id="1254" creator="0x8...d..." price="925.0" />
+                  </div>
+                </CardContent>
+                {!stakedNftsToggle && (
+                  <div className="absolute inset-0 backdrop-blur-[1px] bg-white/10 dark:bg-black/10 border border-white/10 dark:border-purple-500/20 rounded-[11px] pointer-events-none z-10" />
+                )}
+              </Card>
 
-          <Card className="bg-white dark:bg-[#1a1f2e] border border-gray-200 dark:border-gray-700 relative overflow-hidden">
-            <CardHeader>
-              <div className="flex items-center justify-between">
-                <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
-                  My Listed NFTs
-                </CardTitle>
-                <ToggleSwitch
-                  checked={listedNftsToggle}
-                  onChange={setListedNftsToggle}
-                />
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                <NFTCard id="1034" creator="0x8...d..." price="925.0" />
-              </div>
-            </CardContent>
-            {!listedNftsToggle && (
-              <div className="absolute inset-0 backdrop-blur-[1px] bg-white/10 dark:bg-black/10 border border-white/10 dark:border-purple-500/20 rounded-[11px] pointer-events-none z-10" />
-            )}
-          </Card>
+              <ListedNFTs />
             </div>
           </div>
         </div>
@@ -198,7 +180,13 @@ export default function PrinterContent() {
   );
 }
 
-function ToggleSwitch({ checked, onChange }: { checked: boolean; onChange: (checked: boolean) => void }) {
+function ToggleSwitch({
+  checked,
+  onChange,
+}: {
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+}) {
   return (
     <button
       onClick={() => onChange(!checked)}
@@ -217,7 +205,15 @@ function ToggleSwitch({ checked, onChange }: { checked: boolean; onChange: (chec
   );
 }
 
-function NFTCard({ id, creator, price }: { id: string; creator: string; price: string }) {
+function NFTCard({
+  id,
+  creator,
+  price,
+}: {
+  id: string;
+  creator: string;
+  price: string;
+}) {
   return (
     <div className="w-[264px] h-[292px] opacity-100 rounded-[15px] bg-white dark:bg-[#0b0f1a] border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow relative">
       <div className="absolute top-[12px] left-[12px] w-[240px] h-[160px] opacity-100 rounded-[10px] overflow-hidden">
