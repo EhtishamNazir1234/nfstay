@@ -61,7 +61,7 @@ export default function ClaimHistory() {
               <th className="px-2 sm:px-4 py-2 text-left text-xs sm:text-sm lg:text-base font-semibold text-gray-500 dark:text-gray-300 hidden md:table-cell">
                 Status
               </th>
-              <th className="px-4 py-2 w-10 rounded-tr-xl rounded-br-xl"></th>
+              <th className="px-4 py-2 w-10 rounded-tr-xl rounded-br-xl hidden md:table-cell"></th>
             </tr>
           </thead>
           <tbody>
@@ -96,7 +96,7 @@ export default function ClaimHistory() {
                     {claim.status}
                   </span>
                 </td>
-                <td className="px-2 sm:px-4 py-2 sm:py-3 text-center">
+                <td className="px-2 sm:px-4 py-2 sm:py-3 text-center hidden md:table-cell">
                   <button className="inline-flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded hover:bg-gray-200 dark:hover:bg-gray-800 transition">
                     <MoreHorizontal
                       size={14}
