@@ -40,7 +40,7 @@ export default function MintCard({
     } else if (token === "CARD" || token === "EURO") {
       return <EuroLogo className="w-4 h-4" />;
     } else if (token === "ROCKS") {
-      return <RocksLogo className="w-5 h-5" />;
+      return <StayCoinLogo className="w-5 h-5" />;
     } else if (token === "STAY") {
       return <StayCoinLogo className="w-5 h-5" />;
     }
@@ -83,7 +83,7 @@ export default function MintCard({
         isWhiteCard
           ? "bg-white dark:bg-[#1a1f2e] border border-gray-200 dark:border-gray-700"
           : "bg-white/10 dark:bg-[#1a1f2e]/8 dark:border-gray-700"
-      } rounded-[11px] shadow-xl w-full min-h-[354px] relative overflow-hidden p-[25px] flex flex-col justify-between`}
+      } rounded-[11px] shadow-xl w-full max-w-[513px] min-h-[377px] relative overflow-hidden p-8 sm:p-10 flex flex-col justify-between`}
     >
       {/* Background Image */}
       {!isWhiteCard && (
@@ -119,7 +119,7 @@ export default function MintCard({
       <div className="relative z-10 flex flex-col justify-between h-full">
         <div className="flex items-center justify-between mb-8 w-full ">
           <h3
-            className={`text-xl font-bold ${
+            className={`text-2xl sm:text-3xl font-bold ${
               isWhiteCard ? "text-gray-800 dark:text-white" : "text-white"
             }`}
           >
@@ -132,13 +132,9 @@ export default function MintCard({
           <div
             className={`${
               isWhiteCard
-                ? "bg-cyan-50 dark:bg-gray-800/30"
+                ? "bg-[#20E19F1A]"
                 : "bg-white/5 dark:bg-gray-800/30 backdrop-blur-sm"
-            } rounded-lg p-5 ${
-              isWhiteCard
-                ? "border border-cyan-200 dark:border-gray-700/50"
-                : "border border-white/10 dark:border-gray-700/50"
-            } flex-1 min-w-0`}
+            } rounded-lg p-5 flex-1 min-w-0`}
           >
             <label
               className={`text-xs mb-3 block font-bold ${
@@ -161,14 +157,14 @@ export default function MintCard({
               }`}
             />
             <button
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors w-full ${
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors w-full ${
                 isWhiteCard
-                  ? "bg-white border-gray-200 text-gray-700 hover:bg-gray-50"
-                  : "bg-white/5 dark:bg-gray-700/30 border-white/10 dark:border-gray-600/50 text-white hover:bg-white/10 dark:hover:bg-gray-700/50"
+                  ? "bg-white text-gray-700 hover:bg-gray-50"
+                  : "bg-white/5 dark:bg-gray-700/30 text-white hover:bg-white/10 dark:hover:bg-gray-700/50"
               }`}
             >
               {getTokenIcon(payingToken)}
-              <span className="text-sm">{payingToken}</span>
+              <span className="text-sm font-bold">{payingToken}</span>
               <ChevronDown className="w-4 h-4 ml-auto" />
             </button>
           </div>
@@ -176,8 +172,16 @@ export default function MintCard({
           {isWhiteCard ? (
             <div className="relative z-10 flex-shrink-0 self-center">
               <div className="w-10 h-10 rounded-full bg-gradient-to-b from-[#20E19F] to-[#9945FF] p-[2px]">
-                <button className="w-full h-full rounded-full bg-white flex items-center justify-center transition-colors shadow-lg">
-                  <ArrowUpDown className="w-5 h-5 scale-x-[-1] rotate-90 bg-gradient-to-b from-[#20E19F] to-[#9945FF] bg-clip-text text-transparent" />
+                <button className="w-full h-full rounded-full bg-white flex items-center justify-center transition-colors shadow-lg relative">
+                  {/* Lower arrow - purple (full icon as base) */}
+                  <ArrowUpDown className="w-5 h-5 scale-x-[-1] rotate-90 text-[#9945FF]" />
+                  {/* Upper arrow - green (clipped to show only top half) */}
+                  <ArrowUpDown 
+                    className="w-5 h-5 scale-x-[-1] rotate-90 text-[#20E19F] absolute" 
+                    style={{
+                      clipPath: 'polygon(0 0, 100% 0, 100% 100%,0 0%)',
+                    }}
+                  />
                 </button>
               </div>
             </div>
@@ -190,16 +194,12 @@ export default function MintCard({
           <div
             className={`${
               isWhiteCard
-                ? "bg-purple-100 dark:bg-gray-800/30"
+                ? "bg-[#9945FF12]"
                 : "bg-white/5 dark:bg-gray-800/30 backdrop-blur-sm"
-            } rounded-lg p-5 ${
-              isWhiteCard
-                ? "border border-purple-200 dark:border-gray-700/50"
-                : "border border-white/10 dark:border-gray-700/50"
-            } flex-1 min-w-0`}
+            } rounded-lg p-5 flex-1 min-w-0`}
           >
             <label
-              className={`text-xs mb-3 block ${
+              className={`text-xs mb-3 block font-bold ${
                 isWhiteCard
                   ? "text-gray-700 dark:text-gray-300"
                   : "text-white dark:text-gray-400"
@@ -219,14 +219,14 @@ export default function MintCard({
               }`}
             />
             <button
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-colors w-full ${
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors w-full ${
                 isWhiteCard
-                  ? "bg-white border-gray-200 text-gray-700 hover:bg-gray-50"
-                  : "bg-white/5 dark:bg-gray-700/30 border-white/10 dark:border-gray-600/50 text-white hover:bg-white/10 dark:hover:bg-gray-700/50"
+                  ? "bg-white text-gray-700 hover:bg-gray-50"
+                  : "bg-white/5 dark:bg-gray-700/30 text-white hover:bg-white/10 dark:hover:bg-gray-700/50"
               }`}
             >
               {getTokenIcon(receivingToken)}
-              <span className="text-sm">{receivingToken}</span>
+              <span className="text-sm font-bold">{receivingToken}</span>
               {isWhiteCard && <ChevronDown className="w-4 h-4 ml-auto" />}
             </button>
           </div>
