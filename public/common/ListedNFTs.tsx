@@ -11,8 +11,8 @@ interface NFTCardProps {
 
 function NFTCard({ id, creator, price }: NFTCardProps) {
   return (
-    <div className="w-full sm:w-[264px] h-[292px] rounded-[15px] bg-white dark:bg-[#0b0f1a] border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-xl transition-shadow relative flex-shrink-0 shadow-lg">
-      <div className="absolute top-[12px] left-[12px] right-[12px] sm:right-auto sm:w-[240px] h-[160px] opacity-100 rounded-[10px] overflow-hidden">
+    <div className="w-full sm:w-[264px] h-[292px] rounded-[15px] bg-white dark:bg-[#0b0f1a] shadow-lg relative">
+      <div className="absolute top-[12px] left-[12px] right-[12px] sm:right-auto sm:w-[240px] h-[160px] rounded-lg overflow-hidden">
         <Image
           src="/assets/icons/garageImg.png"
           alt="Garage"
@@ -87,7 +87,7 @@ export default function ListedNFTs() {
   const [listedNftsToggle, setListedNftsToggle] = useState(true);
 
   return (
-    <div className="w-full max-w-[1200px] h-auto md:h-[412px] opacity-100 rounded-[11px] dark:border-gray-700 bg-white dark:bg-[#1a1f2e] pt-4 md:pt-[35px] pr-4 md:pr-[40px] pb-4 md:pb-[35px] pl-4 md:pl-[40px] flex flex-col gap-4 md:gap-[30px] overflow-hidden relative">
+    <div className="w-full max-w-[1200px] md:min-h-[412px]  rounded-lg dark:border-gray-700 bg-white dark:bg-[#1a1f2e] pt-4  pr-4 md:pr-7 pb-6 md:pb-[50px] pl-4 md:pl-[40px] flex flex-col gap-4 md:gap-[30px] overflow-hidden relative">
       <div className="flex items-center justify-between">
         <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white">
           Listed NFTs
@@ -97,7 +97,7 @@ export default function ListedNFTs() {
           onChange={setListedNftsToggle}
         />
       </div>
-      <div className="flex-1 overflow-x-auto overflow-y-hidden relative p-4 pb-6 -mx-4 sm:mx-0 sm:px-0 sm:pb-4">
+      <div className="flex-1 overflow-y-hidden relative p-3 -mx-4 sm:mx-0 sm:px-0 ">
         <div className="flex gap-4">
           <NFTCard id="1234" creator="0xd8...d..." price="925.0" />
         </div>

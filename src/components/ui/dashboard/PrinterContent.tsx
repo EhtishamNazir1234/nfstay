@@ -18,19 +18,19 @@ export default function PrinterContent() {
 
   return (
     <>
-      <header className="relative w-full bg-gradient-to-br from-[#2b165a] via-[#1b2a4e] to-[#0f3d3e] pt-40 pb-50 px-4 sm:px-6 lg:px-8">
+      <header className="relative w-full bg-gradient-to-br from-[#2b165a] via-[#1b2a4e] to-[#0f3d3e] pt-20 sm:pt-40 pb-12 sm:pb-50 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl flex justify-center">
-          <div className="w-[1200px]">
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+          <div className="w-full max-w-[1200px]">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
               <div>
-                <h1 className="text-white text-3xl sm:text-4xl font-bold">
+                <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl font-bold">
                   Printer
                 </h1>
-                <p className="text-white/80 text-sm sm:text-base mt-2">
+                <p className="text-white/80 text-xs sm:text-sm lg:text-base mt-1 sm:mt-2">
                   STAKE ROCKS EARN STAYS
                 </p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full lg:w-auto">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 w-full lg:w-auto">
                 {stats.map(({ label, value, sub, icon, gradient }) => {
                   if (gradient) {
                     return (
@@ -38,20 +38,20 @@ export default function PrinterContent() {
                         key={label}
                         className="relative p-[1px] rounded-lg bg-gradient-to-r from-[#5a3ac7] to-[#1bc3b1]"
                       >
-                        <div className="relative flex items-center gap-3 rounded-lg bg-[#2b165a] backdrop-blur-md px-2 py-1 text-white w-full h-full">
-                          <div className="absolute top-1 -left-0 w-10 h-10 flex items-center justify-center z-10">
+                        <div className="relative flex items-center gap-2 sm:gap-3 rounded-lg bg-[#2b165a] backdrop-blur-md px-2 sm:px-3 py-1.5 sm:py-2 text-white w-full h-full">
+                          <div className="absolute top-1 -left-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center z-10">
                             {icon}
                           </div>
-                          <div className="leading-tight pl-8">
-                            <div className="text-lg font-semibold flex items-baseline gap-2">
+                          <div className="leading-tight pl-7 sm:pl-8">
+                            <div className="text-sm sm:text-lg font-semibold flex items-baseline gap-1 sm:gap-2">
                               {value}
                               {sub && (
-                                <span className="text-xs text-white/90">
+                                <span className="text-[10px] sm:text-xs text-white/90">
                                   {sub}
                                 </span>
                               )}
                             </div>
-                            <div className="text-xs text-white/80">{label}</div>
+                            <div className="text-[10px] sm:text-xs text-white/80">{label}</div>
                           </div>
                         </div>
                       </div>
@@ -60,17 +60,17 @@ export default function PrinterContent() {
                   return (
                     <div
                       key={label}
-                      className="relative flex items-center gap-3 rounded-lg border px-2 py-1 bg-white/10 backdrop-blur-md border-white/20 text-white"
+                      className="relative flex items-center gap-2 sm:gap-3 rounded-lg border px-2 sm:px-3 py-1.5 sm:py-2 bg-white/10 backdrop-blur-md border-white/20 text-white"
                     >
-                      <div className="absolute top-1 -left-0 w-10 h-10 flex items-center justify-center z-10">
+                      <div className="absolute top-1 -left-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center z-10">
                         {icon}
                       </div>
-                      <div className="leading-tight pl-8">
-                        <div className="text-lg font-semibold">{value}</div>
+                      <div className="leading-tight pl-7 sm:pl-8">
+                        <div className="text-sm sm:text-lg font-semibold">{value}</div>
                         {sub ? (
-                          <div className="text-xs text-white/90">{sub}</div>
+                          <div className="text-[10px] sm:text-xs text-white/90">{sub}</div>
                         ) : null}
-                        <div className="text-xs text-white/80">{label}</div>
+                        <div className="text-[10px] sm:text-xs text-white/80">{label}</div>
                       </div>
                     </div>
                   );
@@ -81,18 +81,18 @@ export default function PrinterContent() {
         </div>
       </header>
 
-      <div className="relative -mt-40 pb-12 px-4 sm:px-6 lg:px-8">
+      <div className="relative -mt-20 sm:-mt-40 pt-4 sm:pt-0 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl flex justify-center">
-          <div className="w-[1200px]">
-            <div className="bg-white dark:bg-[#1a1f2e] rounded-2xl shadow-xl border border-slate-700 dark:border-gray-700 overflow-hidden p-10">
+          <div className="w-full max-w-[1200px]">
+            <div className="bg-white dark:bg-[#1a1f2e] rounded-2xl shadow-xl border border-slate-700 dark:border-gray-700 overflow-hidden p-4 sm:p-6 lg:p-10">
               <AvatarCarousel avatarCount={10} />
 
-              <div className="flex justify-between">
-                <div>
+              <div className="flex flex-col lg:flex-row justify-between gap-4 sm:gap-6 mt-4 sm:mt-6">
+                <div className="w-full lg:flex-1">
                   <RentSaverSection />
                 </div>
 
-                <div>
+                <div className="w-full lg:flex-1">
                   <StayEarnedSection />
                 </div>
               </div>
@@ -101,8 +101,8 @@ export default function PrinterContent() {
         </div>
 
         <div className="mx-auto max-w-7xl flex justify-center px-4 sm:px-6 lg:px-8">
-          <div className="w-[1200px]">
-            <div className="flex flex-col lg:flex-row gap-3 lg:gap-4 mt-6">
+          <div className="w-full max-w-[1200px]">
+            <div className="flex flex-col lg:flex-row gap-3 lg:gap-4 mt-4 sm:mt-6">
               <div className="w-full lg:w-[435px] flex-shrink-0">
                 <MintCard
                   title="Buy STAY"
@@ -123,8 +123,8 @@ export default function PrinterContent() {
         </div>
 
         <div className="mx-auto max-w-7xl flex justify-center px-4 sm:px-6 lg:px-8">
-          <div className="w-[1200px]">
-            <div className="space-y-6 mt-6">
+          <div className="w-full max-w-[1200px]">
+            <div className="space-y-4 sm:space-y-6 mt-4 sm:mt-6">
               <Card className="bg-white dark:bg-[#1a1f2e] border border-gray-200 dark:border-gray-700 relative overflow-hidden">
                 <CardHeader>
                   <div className="flex items-center justify-between">

@@ -22,22 +22,22 @@ export default function MarketplacePage() {
                 BUY & SELL ROCKS
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+            <div className="flex flex-row gap-3 sm:gap-4 w-full lg:w-auto">
               {/* ROCKS Listed Card */}
-              <div className="flex items-center gap-3 rounded-xl border px-4 py-3 bg-white/10 backdrop-blur-md border-white/20 text-white">
-                <div className="w-9 h-9 flex items-center justify-center">
+              <div className="flex-1 flex items-center gap-3 rounded-xl border px-3 sm:px-4 py-3 bg-white/10 backdrop-blur-md border-white/20 text-white">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center flex-shrink-0 -mt-1">
                   <Gem className="w-5 h-5" />
                 </div>
-                <div className="leading-tight">
-                  <div className="text-lg font-semibold">1347</div>
-                  <div className="text-xs text-white/80">ROCKS Listed</div>
+                <div className="leading-tight min-w-0 flex-1">
+                  <div className="text-base sm:text-lg font-semibold truncate">1347</div>
+                  <div className="text-xs text-white/80 truncate">ROCKS Listed</div>
                 </div>
               </div>
               
               {/* Total Sales Volume Card */}
-              <div className="flex items-center gap-3 rounded-xl border px-4 py-3 bg-white/10 backdrop-blur-md border-white/20 text-white">
-                <div className="w-9 h-9 flex items-center justify-center">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <div className="flex-1 flex items-center gap-3 rounded-xl border px-3 sm:px-4 py-3 bg-white/10 backdrop-blur-md border-white/20 text-white">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center flex-shrink-0 -mt-1">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-5">
                     <path d="M6.99977 19H4.81477C4.49934 19.0009 4.18902 18.9203 3.91394 18.7659C3.63886 18.6116 3.40834 18.3887 3.24477 18.119C3.08768 17.8481 3.00461 17.5407 3.00391 17.2275C3.00321 16.9144 3.08489 16.6066 3.24077 16.335L7.19577 9.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M11 19H19.203C19.5169 18.9976 19.8249 18.9144 20.0974 18.7586C20.3699 18.6027 20.5978 18.3793 20.759 18.11C20.9139 17.8399 20.9954 17.5339 20.9954 17.2225C20.9954 16.9111 20.9139 16.6051 20.759 16.335L19.533 14.215" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     <path d="M14 16L11 19L14 22" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -46,9 +46,9 @@ export default function MarketplacePage() {
                     <path d="M13.3779 9.63301L17.4739 10.731L18.5709 6.63501" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
-                <div className="leading-tight">
-                  <div className="text-lg font-semibold">$12,812.98</div>
-                  <div className="text-xs text-white/80">Total Sales Volume</div>
+                <div className="leading-tight min-w-0 flex-1">
+                  <div className="text-base sm:text-lg font-semibold truncate">$12,812.98</div>
+                  <div className="text-xs text-white/80 truncate">Total Sales Volume</div>
                 </div>
               </div>
             </div>
