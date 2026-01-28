@@ -18,7 +18,7 @@ export default function PrinterContent() {
 
   return (
     <>
-      <header className="relative w-full bg-gradient-to-br from-[#2b165a] via-[#1b2a4e] to-[#0f3d3e] pt-20 sm:pt-40 pb-12 sm:pb-50 px-4 sm:px-6 lg:px-8">
+      <header className="relative w-full bg-gradient-to-br from-[#2b165a] via-[#1b2a4e] to-[#0f3d3e] pt-20 sm:pt-40 pb-25 sm:pb-50 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl flex justify-center">
           <div className="w-full max-w-[1200px]">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6">
@@ -84,26 +84,23 @@ export default function PrinterContent() {
       <div className="relative -mt-20 sm:-mt-40 pt-4 sm:pt-0 pb-8 sm:pb-12 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl flex justify-center">
           <div className="w-full max-w-[1200px]">
-            <div className="bg-white dark:bg-[#1a1f2e] rounded-2xl shadow-xl border border-slate-700 dark:border-gray-700 overflow-hidden p-4 sm:p-6 lg:p-10">
+            <div className="bg-white dark:bg-[#1a1f2e] rounded-2xl shadow-xl dark:border-gray-700 overflow-hidden p-4 sm:p-6 lg:p-10">
               <AvatarCarousel avatarCount={10} />
 
-              <div className="flex flex-col lg:flex-row justify-between gap-4 sm:gap-6 mt-4 sm:mt-6">
+              <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4 sm:gap-6 mt-4 sm:mt-6">
                 <div className="w-full lg:flex-1">
                   <RentSaverSection />
                 </div>
 
-                <div className="w-full lg:flex-1">
+                <div className="w-full lg:flex-1 lg:h-[350px]">
                   <StayEarnedSection />
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="mx-auto max-w-7xl flex justify-center px-4 sm:px-6 lg:px-8">
-          <div className="w-full max-w-[1200px]">
-            <div className="flex flex-col lg:flex-row gap-3 lg:gap-4 mt-4 sm:mt-6">
-              <div className="w-full lg:w-[435px] flex-shrink-0">
+            {/* Buy STAY + TestDriveRock – same width as upper section on mobile */}
+            <div className="flex flex-col lg:flex-row gap-3 lg:gap-4 mt-4 sm:mt-6 w-full max-w-full min-w-0 max-sm:overflow-x-hidden">
+              <div className="w-full max-w-full min-w-0 lg:w-[435px] flex-shrink-0">
                 <MintCard
                   title="Buy STAY"
                   payingLabel="You're Paying"
@@ -115,16 +112,13 @@ export default function PrinterContent() {
                 />
               </div>
 
-              <div className="flex-1">
+              <div className="w-full max-w-full min-w-0 flex-1">
                 <TestDriveRock />
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="mx-auto max-w-7xl flex justify-center px-4 sm:px-6 lg:px-8">
-          <div className="w-full max-w-[1200px]">
-            <div className="space-y-4 sm:space-y-6 mt-4 sm:mt-6">
+            {/* NFTs – same width as upper section on mobile */}
+            <div className="space-y-4 sm:space-y-6 mt-4 sm:mt-6 w-full max-w-full min-w-0 max-sm:overflow-x-hidden">
               <Card className="bg-white dark:bg-[#1a1f2e] border border-gray-200 dark:border-gray-700 relative overflow-hidden">
                 <CardHeader>
                   <div className="flex items-center justify-between">
@@ -138,7 +132,7 @@ export default function PrinterContent() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-sm:w-full max-sm:min-w-0">
                     <NFTCard id="1234" creator="0x8...d..." price="925.0" />
                   </div>
                 </CardContent>
@@ -160,7 +154,7 @@ export default function PrinterContent() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-sm:w-full max-sm:min-w-0">
                     <NFTCard id="1234" creator="0x8...d..." price="925.0" />
                     <NFTCard id="1234" creator="0x8...d..." price="925.0" />
                     <NFTCard id="1254" creator="0x8...d..." price="925.0" />
@@ -215,8 +209,8 @@ function NFTCard({
   price: string;
 }) {
   return (
-    <div className="w-[264px] h-[292px] opacity-100 rounded-[15px] bg-white dark:bg-[#0b0f1a] border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow relative">
-      <div className="absolute top-[12px] left-[12px] w-[240px] h-[160px] opacity-100 rounded-[10px] overflow-hidden">
+    <div className="max-sm:w-full max-sm:min-w-0 sm:w-[264px] h-[292px] opacity-100 rounded-[15px] bg-white dark:bg-[#0b0f1a] border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow relative">
+      <div className="absolute top-[12px] left-[12px] right-[12px] sm:right-auto sm:w-[240px] h-[160px] opacity-100 rounded-[10px] overflow-hidden">
         <Image
           src="/assets/icons/garageImg.png"
           alt="Garage"
