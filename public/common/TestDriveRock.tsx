@@ -1,6 +1,99 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useId } from "react";
+
+interface ValueSliderProps {
+  label: string;
+  minLabel: string;
+  maxLabel: string;
+  value: number;
+  onChange: (v: number) => void;
+  min?: number;
+  max?: number;
+  prefix?: string;
+}
+
+function ValueSlider({
+  label,
+  minLabel,
+  maxLabel,
+  value,
+  onChange,
+  min = 0,
+  max = 10000,
+  prefix = "",
+}: ValueSliderProps) {
+  const caretId = `caret-${useId().replace(/:/g, "")}`;
+  const pct = max > min ? ((value - min) / (max - min)) * 100 : 0;
+
+  return (
+    <div className="w-full min-h-[80px] md:min-h-[99px] opacity-100 flex flex-col space-y-4 md:space-y-6 lg:space-y-10">
+      <label className="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-300">
+        {label}
+      </label>
+      <div className="relative top-3">
+        <div className="absolute -top-8 md:-top-9 left-0 right-0 flex justify-between text-xs md:text-sm font-semibold text-gray-400 dark:text-gray-400 pointer-events-none">
+          <span>{minLabel}</span>
+          <span>{maxLabel}</span>
+        </div>
+        <input
+          type="range"
+          min={min}
+          max={max}
+          value={value}
+          onChange={(e) => onChange(Number(e.target.value))}
+          className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-0 [&::-webkit-slider-thumb]:h-0 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-0 [&::-moz-range-thumb]:h-0"
+          style={{
+            background: `linear-gradient(to right, #1f2937 0%, #1f2937 ${pct}%, #e5e7eb ${pct}%, #e5e7eb 100%)`,
+          }}
+        />
+        <div
+          className="absolute -translate-x-1/2 -top-0 pointer-events-none"
+          style={{ left: `${pct}%` }}
+        >
+          <SliderHandle />
+        </div>
+        <div
+          className="absolute -top-6 md:-top-10 transform -translate-x-1/2"
+          style={{ left: `${pct}%` }}
+        >
+          <div className="relative">
+            <div className="px-2 md:px-3 py-1 md:py-1.5 rounded-sm bg-gradient-to-r from-[#9945FF] to-[#20E19F] text-white text-xs md:text-sm font-semibold whitespace-nowrap shadow-lg">
+              {prefix}
+              {value.toLocaleString()}
+            </div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 -mt-[1px]">
+              <svg
+                width="12"
+                height="6"
+                viewBox="0 0 12 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 0L6 6L12 0H0Z"
+                  fill={`url(#${caretId})`}
+                />
+                <defs>
+                  <linearGradient
+                    id={caretId}
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stopColor="#9945FF" />
+                    <stop offset="100%" stopColor="#20E19F" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 interface ROIIndicatorProps {
   amount: string;
@@ -60,7 +153,7 @@ function ROIIndicator({
         </svg>
 
         <div className="absolute flex flex-col items-center justify-center">
-          <div className="mb-2 md:mb-4">
+          <div className="mt-3 md:mt-0 mb-2 md:mb-4">
             <svg
               width="32"
               height="32"
@@ -98,23 +191,23 @@ function ROIIndicator({
             {amount}
           </div>
 
-          <div className="text-[10px] md:text-xs text-gray-500 font-semibold dark:text-gray-400 text-center mb-1">
+          <div className="text-[9px] md:text-xs text-gray-500 font-semibold dark:text-gray-400 text-center mb-0.5 md:mb-1">
             Total ROI Based On Staking
           </div>
-          <div className="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 text-center font-semibold mb-4 md:mb-6">
+          <div className="text-[9px] md:text-xs text-gray-500 dark:text-gray-400 text-center font-semibold mb-2 md:mb-6">
             Period + Rock Value
           </div>
 
-          <div className="flex gap-4 md:gap-6 mb-4 md:mb-6 text-center">
+          <div className="flex gap-2 md:gap-6 mb-2 md:mb-6 text-center">
             <div className="flex-shrink-0">
-              <div className="text-base md:text-lg font-semibold text-gray-900 dark:text-white">{apr}</div>
-              <p className="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 mt-1">APR</p>
+              <div className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white">{apr}</div>
+              <p className="text-[9px] md:text-xs text-gray-500 dark:text-gray-400 mt-0.5 md:mt-1">APR</p>
             </div>
             <div className="flex-shrink-0 min-w-0">
-              <div className="text-base md:text-lg font-semibold text-gray-900 dark:text-white whitespace-nowrap">
+              <div className="text-xs md:text-lg font-semibold text-gray-900 dark:text-white whitespace-nowrap">
                 {monthlyReturns}
               </div>
-              <p className="text-[10px] md:text-xs text-gray-500 dark:text-gray-400 mt-1 whitespace-nowrap">
+              <p className="text-[9px] md:text-xs text-gray-500 dark:text-gray-400 mt-0.5 md:mt-1 whitespace-nowrap">
                 Monthly Returns
               </p>
             </div>
@@ -272,210 +365,29 @@ export default function TestDriveRock() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 lg:gap-[40px]">
           <div className="space-y-4 md:space-y-6 w-full">
-            <div className="w-full min-h-[80px] md:min-h-[99px] opacity-100 flex flex-col space-y-4 md:space-y-6 lg:space-y-10">
-              <label className="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Number of ROCKS
-              </label>
-              <div className="relative top-3">
-                <div className="absolute -top-8 md:-top-9 left-0 right-0 flex justify-between text-xs md:text-sm font-semibold text-gray-400 dark:text-gray-400 pointer-events-none">
-                  <span>0</span>
-                  <span>10,000</span>
-                </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="10000"
-                  value={numberOfRocks}
-                  onChange={(e) => setNumberOfRocks(Number(e.target.value))}
-                  className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-0 [&::-webkit-slider-thumb]:h-0 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-0 [&::-moz-range-thumb]:h-0"
-                  style={{
-                    background: `linear-gradient(to right, #1f2937 0%, #1f2937 ${
-                      (numberOfRocks / 10000) * 100
-                    }%, #e5e7eb ${
-                      (numberOfRocks / 10000) * 100
-                    }%, #e5e7eb 100%)`,
-                  }}
-                />
-                <div
-                  className="absolute  -translate-x-1/2 -top-0 pointer-events-none"
-                  style={{ left: `${(numberOfRocks / 10000) * 100}%` }}
-                >
-                  <SliderHandle />
-                </div>
-                <div
-                  className="absolute -top-9 md:-top-10 transform -translate-x-1/2 "
-                  style={{ left: `${(numberOfRocks / 10000) * 100}%` }}
-                >
-                  <div className="relative">
-                    <div className="px-2 md:px-3 py-1 md:py-1.5 rounded-sm bg-gradient-to-r from-[#9945FF] to-[#20E19F] text-white text-xs md:text-sm font-semibold whitespace-nowrap shadow-lg">
-                      {numberOfRocks.toLocaleString()}
-                    </div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2 -mt-[1px]">
-                      <svg
-                        width="12"
-                        height="6"
-                        viewBox="0 0 12 6"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M0 0L6 6L12 0H0Z"
-                          fill="url(#caret-gradient-rocks)"
-                        />
-                        <defs>
-                          <linearGradient
-                            id="caret-gradient-rocks"
-                            x1="0%"
-                            y1="0%"
-                            x2="100%"
-                            y2="0%"
-                          >
-                            <stop offset="0%" stopColor="#9945FF" />
-                            <stop offset="100%" stopColor="#20E19F" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full min-h-[80px] md:min-h-[99px] opacity-100 flex flex-col space-y-4 md:space-y-6 lg:space-y-10">
-              <label className="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Price of ROCKS
-              </label>
-              <div className="relative top-3">
-                <div className="absolute -top-8 md:-top-9 left-0 right-0 flex justify-between text-xs md:text-sm font-semibold text-gray-400 dark:text-gray-400 pointer-events-none">
-                  <span>$0</span>
-                  <span>$10,000</span>
-                </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="10000"
-                  value={priceOfRocks}
-                  onChange={(e) => setPriceOfRocks(Number(e.target.value))}
-                  className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-0 [&::-webkit-slider-thumb]:h-0 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-0 [&::-moz-range-thumb]:h-0"
-                  style={{
-                    background: `linear-gradient(to right, #1f2937 0%, #1f2937 ${
-                      (priceOfRocks / 10000) * 100
-                    }%, #e5e7eb ${
-                      (priceOfRocks / 10000) * 100
-                    }%, #e5e7eb 100%)`,
-                  }}
-                />
-                <div
-                  className="absolute -translate-x-1/2 pointer-events-none"
-                  style={{ left: `${(priceOfRocks / 10000) * 100}%` }}
-                >
-                  <SliderHandle />
-                </div>
-                <div
-                  className="absolute -top-9 md:-top-10 transform -translate-x-1/2"
-                  style={{ left: `${(priceOfRocks / 10000) * 100}%` }}
-                >
-                  <div className="relative">
-                    <div className="px-2 md:px-3 py-1 md:py-1.5 rounded-sm bg-gradient-to-r from-[#9945FF] to-[#20E19F] text-white text-xs md:text-sm font-semibold whitespace-nowrap shadow-lg">
-                      ${priceOfRocks.toLocaleString()}
-                    </div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2 -mt-[1px]">
-                      <svg
-                        width="12"
-                        height="6"
-                        viewBox="0 0 12 6"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M0 0L6 6L12 0H0Z"
-                          fill="url(#caret-gradient-price-rocks)"
-                        />
-                        <defs>
-                          <linearGradient
-                            id="caret-gradient-price-rocks"
-                            x1="0%"
-                            y1="0%"
-                            x2="100%"
-                            y2="0%"
-                          >
-                            <stop offset="0%" stopColor="#9945FF" />
-                            <stop offset="100%" stopColor="#20E19F" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full min-h-[80px] md:min-h-[99px] opacity-100 flex flex-col space-y-4 md:space-y-6 lg:space-y-10">
-              <label className="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Price of STAY
-              </label>
-              <div className="relative top-3">
-                <div className="absolute -top-8 md:-top-9 left-0 right-0 flex justify-between text-xs md:text-sm font-semibold text-gray-400 dark:text-gray-400 pointer-events-none">
-                  <span>$0</span>
-                  <span>$10,000</span>
-                </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="10000"
-                  value={priceOfStay}
-                  onChange={(e) => setPriceOfStay(Number(e.target.value))}
-                  className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-0 [&::-webkit-slider-thumb]:h-0 [&::-moz-range-thumb]:appearance-none [&::-moz-range-thumb]:w-0 [&::-moz-range-thumb]:h-0"
-                  style={{
-                    background: `linear-gradient(to right, #1f2937 0%, #1f2937 ${
-                      (priceOfStay / 10000) * 100
-                    }%, #e5e7eb ${(priceOfStay / 10000) * 100}%, #e5e7eb 100%)`,
-                  }}
-                />
-                <div
-                  className="absolute -translate-x-1/2 -top-0 pointer-events-none"
-                  style={{ left: `${(priceOfStay / 10000) * 100}%` }}
-                >
-                  <SliderHandle />
-                </div>
-                <div
-                  className="absolute -top-9 md:-top-10 transform -translate-x-1/2"
-                  style={{ left: `${(priceOfStay / 10000) * 100}%` }}
-                >
-                  <div className="relative">
-                    <div className="px-2 md:px-3 py-1 md:py-1.5 rounded-sm bg-gradient-to-r from-[#9945FF] to-[#20E19F] text-white text-xs md:text-sm font-semibold whitespace-nowrap shadow-lg">
-                      ${priceOfStay.toLocaleString()}
-                    </div>
-                    <div className="absolute left-1/2 transform -translate-x-1/2 -mt-[1px]">
-                      <svg
-                        width="12"
-                        height="6"
-                        viewBox="0 0 12 6"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M0 0L6 6L12 0H0Z"
-                          fill="url(#caret-gradient-price-stay)"
-                        />
-                        <defs>
-                          <linearGradient
-                            id="caret-gradient-price-stay"
-                            x1="0%"
-                            y1="0%"
-                            x2="100%"
-                            y2="0%"
-                          >
-                            <stop offset="0%" stopColor="#9945FF" />
-                            <stop offset="100%" stopColor="#20E19F" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <ValueSlider
+              label="Number of ROCKS"
+              minLabel="0"
+              maxLabel="10,000"
+              value={numberOfRocks}
+              onChange={setNumberOfRocks}
+            />
+            <ValueSlider
+              label="Price of ROCKS"
+              minLabel="$0"
+              maxLabel="$10,000"
+              value={priceOfRocks}
+              onChange={setPriceOfRocks}
+              prefix="$"
+            />
+            <ValueSlider
+              label="Price of STAY"
+              minLabel="$0"
+              maxLabel="$10,000"
+              value={priceOfStay}
+              onChange={setPriceOfStay}
+              prefix="$"
+            />
 
             <div className="flex flex-col gap-3 md:gap-[15px]">
               <label className="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-300">
