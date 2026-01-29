@@ -15,6 +15,7 @@ export default function DashboardPage() {
       {/* Header Section */}
       <header className="relative w-full bg-gradient-to-br from-[#2b165a] via-[#1b2a4e] to-[#0f3d3e] pt-25 md:pt-40 pb-60">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1200px] mx-auto">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-6">
             <div>
               <h1 className="text-white text-4xl sm:text-5xl font-bold mb-2">
@@ -49,11 +50,13 @@ export default function DashboardPage() {
               ))}
             </div>
           </div>
+          </div>
         </div>
       </header>
 
       <div className="relative -mt-65 md:-mt-50 ">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-8">
+          <div className="max-w-[1200px] mx-auto">
           {/* Top Row: Two Minting Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
             <MintCard
@@ -76,7 +79,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Middle Row: Feature Cards */}
-          <div className="flex flex-col lg:flex-row mb-8 relative z-10 w-full max-w-[1200px] h-auto lg:h-[509px] justify-between gap-6 lg:gap-[22px]">
+          <div className="flex flex-col lg:flex-row mb-8 relative z-10 w-full h-auto lg:h-[509px] justify-between gap-6 lg:gap-[22px]">
             <FeatureCard
               title="Printer"
               badgeText="Unclaimed Rewards: $500"
@@ -132,6 +135,7 @@ export default function DashboardPage() {
 
           {/* Referral Section */}
           <ReferralSection />
+          </div>
         </div>
       </div>
     </div>

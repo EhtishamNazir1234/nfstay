@@ -83,7 +83,7 @@ export default function MintCard({
         isWhiteCard
           ? "bg-white dark:bg-[#1a1f2e] border border-gray-200 dark:border-gray-700"
           : "bg-white/10 dark:bg-[#1a1f2e]/8 dark:border-gray-700"
-      } rounded-[11px] shadow-xl w-full max-w-[513px] min-h-[377px] relative overflow-hidden p-8 sm:p-10 flex flex-col justify-between`}
+      } rounded-[11px] shadow-xl w-full min-h-[377px] relative overflow-hidden p-8 sm:p-10 flex flex-col justify-between`}
     >
       {/* Background Image */}
       {!isWhiteCard && (

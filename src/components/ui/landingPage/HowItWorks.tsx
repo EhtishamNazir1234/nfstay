@@ -27,16 +27,16 @@ export function HowItWorks() {
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-purple-50 via-cyan-50 to-white dark:bg-transparent py-20 px-4 md:px-8">
+    <section className="min-h-screen bg-gradient-to-b from-purple-50 via-cyan-50 to-white dark:bg-transparent py-12 sm:py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mt-20">
-          <h2 className="text-4xl md:text-5xl font-semibold ml-90 text-gray-900">
+        <div className="text-center mt-10 sm:mt-20">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold ml-0 md:ml-[22.5rem] text-gray-900">
             How It Works
           </h2>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <Image alt="img" src={img} />
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+          <Image alt="img" src={img} className="w-full h-auto max-w-full" />
+          <div className="space-y-6 sm:space-y-8">
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (

@@ -100,7 +100,7 @@ export default function PrinterContent() {
 
             {/* Buy STAY + TestDriveRock – same width as upper section on mobile */}
             <div className="flex flex-col lg:flex-row gap-3 lg:gap-4 mt-4 sm:mt-6 w-full max-w-full min-w-0 max-sm:overflow-x-hidden">
-              <div className="w-full max-w-full min-w-0 lg:w-[435px] flex-shrink-0">
+              <div className="w-full max-w-full min-w-0 lg:flex-1">
                 <MintCard
                   title="Buy STAY"
                   payingLabel="You're Paying"

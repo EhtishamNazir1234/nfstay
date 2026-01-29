@@ -20,9 +20,9 @@ import { properties as PROPERTIES } from "@/data/dummy";
 
 export function PropertyListing() {
   return (
-    <section className="w-full py-16 bg-white dark:bg-[#0b0f1a]">
+    <section className="w-full py-16 bg-white dark:bg-[#0b0f1a] px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-10">
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-gray-900 dark:text-gray-100">
             Stays In
             <span className=" ml-2 bg-gradient-to-r from-[#9945FF] to-[#20E19F] bg-clip-text text-transparent">
@@ -37,7 +37,7 @@ export function PropertyListing() {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {PROPERTIES.map((property, index) => (
             <PropertyCard key={index} {...property} />
           ))}
@@ -63,22 +63,21 @@ export default function Home() {
 
           <div className="absolute inset-0 bg-[#2B2828] opacity-50 z-10" />
 
-          <div className="relative z-20 mx-auto max-w-7xl flex flex-col items-center text-center pt-40 space-y-8">
-              <h1 className="text-white text-5xl md:text-7xl font-semibold max-w-6xl">
+          <div className="relative z-20 mx-auto max-w-7xl flex flex-col items-center text-center pt-24 sm:pt-32 md:pt-40 px-4 sm:px-6 space-y-6 sm:space-y-8">
+              <h1 className="text-white text-3xl sm:text-5xl md:text-7xl font-semibold max-w-6xl">
                 Book Short-Let Accommodations & Pay With Crypto.
               </h1>
-              <div>
+              <div className="w-full max-w-full min-w-0">
                 <BookingSearchBar />
               </div>
-              <div className="">
-                <h1 className="text-white font-light text-xl w-130">
-                  
+              <div className="w-full max-w-full min-w-0">
+                <h1 className="text-white font-light text-base sm:text-xl max-w-full sm:w-[32rem] mx-auto">
                   <span>
                     Tokenizing the Value of Unused Nights, One Token at a Time —
                     Never Expires, Always Valuable .
                   </span>
                 </h1>
-                <div className="py-10 justify-center gap-x-5 flex">
+                <div className="py-6 sm:py-10 justify-center gap-3 sm:gap-x-5 flex flex-wrap">
                   <div className="ml-0">
                     <CommonGradientBtn icon="" label="Document" />
                   </div>
@@ -87,7 +86,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <button className="py-15 cursor-pointer">
+              <button className="py-8 sm:py-12 cursor-pointer">
                 <NavigationIcon />
               </button>
           </div>

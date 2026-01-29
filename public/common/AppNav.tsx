@@ -125,7 +125,7 @@ export default function AppNav({ className }: AppNavProps) {
       <div className="hidden md:flex mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 justify-center">
         <div 
           className={cn(
-            "w-[1200px] flex h-16 items-center justify-between rounded-2xl backdrop-blur-md border border-white/30 dark:border-purple-500/40 px-4 py-2 mt-4 transition-all duration-300",
+            "w-full max-w-[1200px] flex h-16 items-center justify-between rounded-2xl backdrop-blur-md border border-white/30 dark:border-purple-500/40 px-4 py-2 mt-4 transition-all duration-300",
             scrolled && (theme === "light" || !theme) && "bg-black",
             scrolled && theme === "dark" && "bg-gradient-to-r from-[#9945FF] to-[#20E19F]"
           )}
