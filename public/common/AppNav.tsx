@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -12,10 +12,20 @@ interface AppNavProps {
   className?: string;
 }
 
+const NAV_ITEMS = [
+  { name: "Dashboard", link: "/dashboard" },
+  { name: "Printer", link: "/printer" },
+  { name: "Farm", link: "/farm" },
+  { name: "Marketplace", link: "/marketplace" },
+  { name: "Migrate", link: "/migrate" },
+  { name: "Portfolio", link: "/portfolio" },
+];
+
 export default function AppNav({ className }: AppNavProps) {
   const [walletAddress] = useState("0x23...8374");
   const { theme, setTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,12 +52,16 @@ export default function AppNav({ className }: AppNavProps) {
           )}
         >
           {/* Hamburger Menu */}
-          <button className="w-10 h-10 flex items-center justify-center text-white">
-            <Menu className="w-6 h-6" />
+          <button 
+            onClick={() => setMobileMenuOpen((o) => !o)}
+            className="w-10 h-10 flex items-center justify-center text-white"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
 
           {/* Logo - Centered */}
-          <Link href="/" className="flex items-center justify-center flex-1">
+          <Link href="/" className="flex items-center justify-center flex-1" onClick={() => setMobileMenuOpen(false)}>
             <Image src={logo} alt="logo" width={120} height={40} className="h-8 w-auto" />
           </Link>
 
@@ -81,6 +95,30 @@ export default function AppNav({ className }: AppNavProps) {
             </button>
           </div>
         </div>
+
+        {/* Mobile menu dropdown */}
+        {mobileMenuOpen && (
+          <div 
+            className={cn(
+              "mt-2 w-full rounded-2xl backdrop-blur-md border border-white/30 dark:border-purple-500/40 overflow-hidden transition-all duration-300",
+              scrolled && (theme === "light" || !theme) && "bg-black/80",
+              scrolled && theme === "dark" && "bg-gradient-to-r from-[#9945FF]/90 to-[#20E19F]/90"
+            )}
+          >
+            <nav className="flex flex-col py-2">
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.link}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-4 py-3 text-white text-sm font-medium hover:bg-white/10 transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
+          </div>
+        )}
       </div>
 
       {/* Desktop Navbar */}
@@ -99,14 +137,7 @@ export default function AppNav({ className }: AppNavProps) {
 
           {/* Navigation Links */}
           <div className="flex items-center gap-6">
-            {[
-              { name: "Dashboard", link: "/dashboard" },
-              { name: "Printer", link: "/printer" },
-              { name: "Farm", link: "/farm" },
-              { name: "Marketplace", link: "/marketplace" },
-              { name: "Migrate", link: "/migrate" },
-              { name: "Portfolio", link: "/portfolio" },
-            ].map((item) => (
+            {NAV_ITEMS.map((item) => (
               <Link
                 key={item.name}
                 href={item.link}

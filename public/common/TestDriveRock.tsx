@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useId } from "react";
+import { cn } from "@/lib/utils";
 
 interface ValueSliderProps {
   label: string;
@@ -303,7 +304,11 @@ const BoostedAPRIcon = () => {
   );
 };
 
-export default function TestDriveRock() {
+interface TestDriveRockProps {
+  variant?: "default" | "marketplace";
+}
+
+export default function TestDriveRock({ variant = "default" }: TestDriveRockProps) {
   const [numberOfRocks, setNumberOfRocks] = useState(293);
   const [priceOfRocks, setPriceOfRocks] = useState(1212);
   const [priceOfStay, setPriceOfStay] = useState(1212);
@@ -414,7 +419,7 @@ export default function TestDriveRock() {
             </div>
           </div>
 
-          <div className="w-full lg:w-[279px] min-h-[300px] md:min-h-[372px] opacity-100 flex flex-col items-center justify-center lg:ml-0 mx-auto lg:mx-0 mt-4 md:mt-0">
+          <div className={cn("w-full lg:w-[279px] min-h-[300px] md:min-h-[372px] opacity-100 flex flex-col items-center justify-center mx-auto lg:mx-0 mt-4 md:mt-0", variant === "marketplace" ? "lg:ml-6" : "lg:ml-0")}>
             <ROIIndicator
               amount={`$${Math.round(calculations.totalRoi).toLocaleString()}`}
               title="Total ROI Based On Staking Period + Rock Value"
