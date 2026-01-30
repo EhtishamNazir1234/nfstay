@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -22,6 +23,7 @@ const NAV_ITEMS = [
 ];
 
 export default function AppNav({ className }: AppNavProps) {
+  const pathname = usePathname();
   const [walletAddress] = useState("0x23...8374");
   const { theme, setTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
@@ -106,16 +108,24 @@ export default function AppNav({ className }: AppNavProps) {
             )}
           >
             <nav className="flex flex-col py-2">
-              {NAV_ITEMS.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.link}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 text-white text-sm font-medium hover:bg-white/10 transition-colors"
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {NAV_ITEMS.map((item) => {
+                const isActive = pathname === item.link || (item.link !== "/" && pathname.startsWith(item.link));
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.link}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "mx-2 px-4 py-3 rounded-lg border text-sm font-medium transition-all",
+                      isActive
+                        ? "border-white/40 bg-white/5 text-white"
+                        : "border-transparent text-white/70 hover:text-white hover:border-white/40 hover:bg-white/5"
+                    )}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
             </nav>
           </div>
         )}
@@ -136,16 +146,24 @@ export default function AppNav({ className }: AppNavProps) {
           </Link>
 
           {/* Navigation Links */}
-          <div className="flex items-center gap-6">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.name}
-                href={item.link}
-                className="text-white text-sm font-normal transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
+          <div className="flex items-center gap-2">
+            {NAV_ITEMS.map((item) => {
+              const isActive = pathname === item.link || (item.link !== "/" && pathname.startsWith(item.link));
+              return (
+                <Link
+                  key={item.name}
+                  href={item.link}
+                  className={cn(
+                    "relative px-4 py-2 rounded-lg border text-sm font-normal transition-all",
+                    isActive
+                      ? "border-white/40 bg-white/5 text-white"
+                      : "border-transparent text-white/70 hover:text-white hover:border-white/40 hover:bg-white/5"
+                  )}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Right Side Controls */}
