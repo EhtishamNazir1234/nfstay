@@ -27,10 +27,10 @@ export function HowItWorks() {
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-b from-purple-50 via-cyan-50 to-white dark:bg-transparent py-12 sm:py-20 px-4 md:px-8">
+    <section className="min-h-screen bg-gradient-to-b from-purple-50 via-cyan-50 to-white dark:from-[#0b0f1a] dark:via-[#071022] dark:to-[#0b0f1a] py-12 sm:py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mt-10 sm:mt-20">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold ml-0 md:ml-[22.5rem] text-gray-900">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold ml-0 md:ml-[22.5rem] text-gray-900 dark:text-gray-100">
             How It Works
           </h2>
         </div>

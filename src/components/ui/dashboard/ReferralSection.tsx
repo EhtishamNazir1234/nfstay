@@ -64,8 +64,8 @@ export default function ReferralPage() {
   };
 
   return (
-    <div className="relative w-full max-w-[1196px] h-auto min-h-[425px] rounded-2xl bg-white opacity-100 mx-auto overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white rounded-2xl" />
+    <div className="relative w-full max-w-[1196px] h-auto min-h-[425px] rounded-2xl bg-white dark:bg-[#071022] dark:border dark:border-gray-700/50 opacity-100 mx-auto overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-[#0b0f1a] dark:to-[#071022] rounded-2xl" />
 
       <div className="hidden lg:block absolute top-[17px] left-[16px]">
         <Image
@@ -145,28 +145,28 @@ export default function ReferralPage() {
             height={10}
             className="object-contain"
           />
-          <span className="text-gray-800 font-semibold text-sm sm:text-base">
+          <span className="text-gray-800 dark:text-gray-200 font-semibold text-sm sm:text-base">
             10K+ Already Joined
           </span>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 w-3/4 sm:mb-4 text-center px-4">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-3 w-3/4 sm:mb-4 text-center px-4">
           Invite Your Friends To Join
         </h1>
 
-        <p className="text-sm sm:text-base lg:text-lg text-gray-500 mb-6 sm:mb-8 text-center px-4">
+        <p className="text-sm sm:text-base lg:text-lg text-gray-500 dark:text-gray-400 mb-6 sm:mb-8 text-center px-4">
           NFsTay And Earn $25 Per NFT They Purchase
         </p>
 
         <div className="flex flex-col lg:flex-row items-center justify-center gap-3 mb-4 sm:mb-6 lg:mb-8 w-full max-w-xl lg:px-20">
-          <div className="border-[2px] border-dashed border-purple-400 rounded-lg px-3 sm:px-4 py-3 bg-purple-50 w-full lg:flex-1">
-            <p className="text-purple-700 font-semibold text-xs break-all text-center lg:text-left">
+          <div className="border-[2px] border-dashed border-purple-400 dark:border-purple-500/60 rounded-lg px-3 sm:px-4 py-3 bg-purple-50 dark:bg-purple-500/10 w-full lg:flex-1">
+            <p className="text-purple-700 dark:text-purple-300 font-semibold text-xs break-all text-center lg:text-left">
               {referralLink}
             </p>
           </div>
           <button
             onClick={handleCopy}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors w-full lg:w-auto text-xs sm:text-sm"
+            className="bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-colors w-full lg:w-auto text-xs sm:text-sm"
           >
             <CopyIcon />
             {copied ? "Copied!" : "Copy"}
@@ -174,19 +174,19 @@ export default function ReferralPage() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 px-4 w-full">
-          <span className="text-gray-700 font-semibold text-base sm:text-lg mb-1 sm:mb-0">
+          <span className="text-gray-700 dark:text-gray-200 font-semibold text-base sm:text-lg mb-1 sm:mb-0">
             Share It:
           </span>
           <div className="flex items-center justify-center gap-2 sm:gap-3">
-            <button className="border-2 border-gray-300 hover:bg-gray-50 text-gray-700 px-2 sm:px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 bg-transparent transition-colors whitespace-nowrap">
+            <button className="border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-200 px-2 sm:px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 bg-transparent transition-colors whitespace-nowrap">
               <FacebookIcon />
               <span className="text-xs sm:text-sm">Facebook</span>
             </button>
-            <button className="border-2 border-gray-300 hover:bg-gray-50 text-gray-700 px-2 sm:px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 bg-transparent transition-colors whitespace-nowrap">
+            <button className="border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-200 px-2 sm:px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 bg-transparent transition-colors whitespace-nowrap">
               <Instagram size={16} />
               <span className="text-xs sm:text-sm">Instagram</span>
             </button>
-            <button className="border-2 border-gray-300 hover:bg-gray-50 text-gray-700 px-2 sm:px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 bg-transparent transition-colors whitespace-nowrap">
+            <button className="border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700/50 text-gray-700 dark:text-gray-200 px-2 sm:px-3 md:px-4 py-2 rounded-lg flex items-center gap-2 bg-transparent transition-colors whitespace-nowrap">
               <TwitterIcon />
               <span className="text-xs sm:text-sm">Twitter</span>
             </button>

@@ -26,13 +26,8 @@ const NAV_ITEMS = [
 
 export default function HomeNav() {
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,13 +38,8 @@ export default function HomeNav() {
   }, []);
 
   const toggleTheme = () => {
-    if (!mounted) {
-      setTheme("dark");
-      return;
-    }
     const currentTheme = resolvedTheme || theme || "light";
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-    setTheme(newTheme);
+    setTheme(currentTheme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -59,8 +49,8 @@ export default function HomeNav() {
         <div
           className={cn(
             "w-full flex h-14 items-center justify-between rounded-2xl backdrop-blur-md border border-white/30 dark:border-purple-500/40 px-3 py-2 transition-all duration-300",
-            scrolled && (theme === "light" || !theme) && "bg-black/80",
-            scrolled && theme === "dark" && "bg-gradient-to-r from-[#9945FF]/80 to-[#20E19F]/80"
+            scrolled && (resolvedTheme === "light" || !resolvedTheme) && "bg-black/80",
+            scrolled && resolvedTheme === "dark" && "bg-gradient-to-r from-[#9945FF]/80 to-[#20E19F]/80"
           )}
         >
           <button
@@ -76,6 +66,23 @@ export default function HomeNav() {
           </Link>
 
           <div className="flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              type="button"
+              aria-label="Toggle theme"
+              className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center hover:bg-white/25 transition-colors"
+            >
+              {(resolvedTheme || theme) === "dark" ? (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                </svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19.7363 14.6025C19.5896 14.355 19.1771 13.97 18.1505 14.1533C17.5821 14.2542 17.0046 14.3 16.4271 14.2725C14.2913 14.1808 12.3571 13.2 11.0096 11.6875C9.81797 10.3583 9.08463 8.62583 9.07546 6.75583C9.07546 5.71083 9.27713 4.70249 9.68963 3.74916C10.093 2.82333 9.8088 2.33749 9.60713 2.13583C9.3963 1.92499 8.9013 1.63166 7.92963 2.03499C4.18046 3.61166 1.8613 7.37 2.1363 11.3942C2.4113 15.18 5.06963 18.4158 8.58963 19.635C9.43296 19.9283 10.3221 20.1025 11.2388 20.1392C11.3855 20.1483 11.5321 20.1575 11.6788 20.1575C14.7496 20.1575 17.628 18.7092 19.443 16.2433C20.0571 15.3908 19.8921 14.85 19.7363 14.6025Z" fill="white"/>
+                </svg>
+              )}
+            </button>
             <button className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.3052 11.0842L13.1892 9.62167C12.9525 9.32667 12.7325 8.62167 12.7325 8.21083V6.6475C12.7325 4.21083 10.3375 2.10583 7.51019 2.10583C4.67352 2.10583 2.27852 4.21083 2.27852 6.6475V8.20083C2.27852 8.61167 2.05852 9.31667 1.83019 9.6125L0.714189 11.065C0.442523 11.4108 0.368523 11.8425 0.515189 12.2283C0.661856 12.6142 1.00519 12.8842 1.42186 12.9633C2.05252 13.0842 2.69419 13.1633 3.34752 13.2C3.44752 13.2058 3.54752 13.21 3.64752 13.215C3.78919 13.2217 3.93186 13.2267 4.07452 13.2317C4.26352 13.2375 4.45252 13.2425 4.64252 13.2475C5.11519 13.26 5.58919 13.2633 6.06352 13.2633C6.52686 13.2633 6.98919 13.26 7.44252 13.2475C7.59419 13.2425 7.73686 13.2375 7.88919 13.2317C8.03186 13.2267 8.17452 13.2217 8.31686 13.215C8.41686 13.21 8.51686 13.2058 8.61686 13.2C9.27919 13.1633 9.92186 13.0842 10.5525 12.9633C10.9369 12.8842 11.2685 12.6142 11.4219 12.2283C11.5842 11.8425 11.5319 11.4108 14.3052 11.0842Z" fill="white"/>
@@ -104,8 +111,8 @@ export default function HomeNav() {
           <div
             className={cn(
               "mt-2 w-full rounded-2xl backdrop-blur-md border border-white/30 dark:border-purple-500/40 overflow-hidden transition-all duration-300",
-              scrolled && (theme === "light" || !theme) && "bg-black/80",
-              scrolled && theme === "dark" && "bg-gradient-to-r from-[#9945FF]/90 to-[#20E19F]/90"
+              scrolled && (resolvedTheme === "light" || !resolvedTheme) && "bg-black/80",
+              scrolled && resolvedTheme === "dark" && "bg-gradient-to-r from-[#9945FF]/90 to-[#20E19F]/90"
             )}
           >
             <nav className="flex flex-col py-2">
@@ -140,9 +147,16 @@ export default function HomeNav() {
                 aria-label="Toggle theme"
                 type="button"
               >
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="pointer-events-none">
-                  <path d="M19.7363 14.6025C19.5896 14.355 19.1771 13.97 18.1505 14.1533C17.5821 14.2542 17.0046 14.3 16.4271 14.2725C14.2913 14.1808 12.3571 13.2 11.0096 11.6875C9.81797 10.3583 9.08463 8.62583 9.07546 6.75583C9.07546 5.71083 9.27713 4.70249 9.68963 3.74916C10.093 2.82333 9.8088 2.33749 9.60713 2.13583C9.3963 1.92499 8.9013 1.63166 7.92963 2.03499C4.18046 3.61166 1.8613 7.37 2.1363 11.3942C2.4113 15.18 5.06963 18.4158 8.58963 19.635C9.43296 19.9283 10.3221 20.1025 11.2388 20.1392C11.3855 20.1483 11.5321 20.1575 11.6788 20.1575C14.7496 20.1575 17.628 18.7092 19.443 16.2433C20.0571 15.3908 19.8921 14.85 19.7363 14.6025Z" fill="white"/>
-                </svg>
+                {(resolvedTheme || theme) === "dark" ? (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="pointer-events-none">
+                    <circle cx="12" cy="12" r="4" />
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                  </svg>
+                ) : (
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="pointer-events-none">
+                    <path d="M19.7363 14.6025C19.5896 14.355 19.1771 13.97 18.1505 14.1533C17.5821 14.2542 17.0046 14.3 16.4271 14.2725C14.2913 14.1808 12.3571 13.2 11.0096 11.6875C9.81797 10.3583 9.08463 8.62583 9.07546 6.75583C9.07546 5.71083 9.27713 4.70249 9.68963 3.74916C10.093 2.82333 9.8088 2.33749 9.60713 2.13583C9.3963 1.92499 8.9013 1.63166 7.92963 2.03499C4.18046 3.61166 1.8613 7.37 2.1363 11.3942C2.4113 15.18 5.06963 18.4158 8.58963 19.635C9.43296 19.9283 10.3221 20.1025 11.2388 20.1392C11.3855 20.1483 11.5321 20.1575 11.6788 20.1575C14.7496 20.1575 17.628 18.7092 19.443 16.2433C20.0571 15.3908 19.8921 14.85 19.7363 14.6025Z" fill="white"/>
+                  </svg>
+                )}
               </button>
               <CommonGradientBtn
                 className="bg-transparent"

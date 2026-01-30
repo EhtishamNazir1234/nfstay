@@ -12,7 +12,7 @@ export function FAQ() {
   };
 
   return (
-    <section className="w-full bg-white dark:bg-transparent py-12 sm:py-20 px-4 sm:px-6">
+    <section className="w-full bg-white dark:bg-[#0b0f1a] py-12 sm:py-20 px-4 sm:px-6">
       <div className="mx-auto max-w-7xl">
         <div className="mb-8 sm:mb-12 text-center">
           <h2 className="text-2xl sm:text-4xl font-bold text-[#2B2828] dark:text-gray-100">
@@ -28,8 +28,8 @@ export function FAQ() {
               key={index}
               className={`rounded-lg border transition-all duration-300 ${
                 expandedIndex === index
-                  ? "border-transparent bg-gradient-to-r from-purple-200 via-pink-100 to-cyan-200"
-                  : "border-gray-200 bg-white hover:border-gray-300"
+                  ? "border-transparent bg-gradient-to-r from-purple-200 via-pink-100 to-cyan-200 dark:from-purple-500/20 dark:via-pink-500/20 dark:to-cyan-500/20 dark:border-purple-500/30"
+                  : "border-gray-200 dark:border-gray-700 bg-white dark:bg-[#071022] hover:border-gray-300 dark:hover:border-gray-600"
               }`}
             >
               <button
@@ -38,23 +38,23 @@ export function FAQ() {
               >
                 <div className="flex items-start gap-3 sm:gap-4 flex-1 min-w-0">
                   <div
-                    className={`w-1 bg-gray-900 rounded-full transition-all duration-300 flex-shrink-0 ${
+                    className={`w-1 rounded-full transition-all duration-300 flex-shrink-0 bg-gray-900 dark:bg-white ${
                       expandedIndex === index ? "h-12 -mt-2 " : "h-8"
                     }`}
                   />
-                  <span className="font-medium text-gray-900 text-base sm:text-lg leading-relaxed">
+                  <span className="font-medium text-gray-900 dark:text-gray-100 text-base sm:text-lg leading-relaxed">
                     {item.question}
                   </span>
                 </div>
                 <ChevronUp
-                  className={`w-4 h-4 sm:w-5 sm:h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ml-2 sm:ml-4 ${
+                  className={`w-4 h-4 sm:w-5 sm:h-5 text-gray-400 dark:text-gray-500 flex-shrink-0 transition-transform duration-300 ml-2 sm:ml-4 ${
                     expandedIndex === index ? "rotate-0" : "rotate-180"
                   }`}
                 />
               </button>
               {expandedIndex === index && (
                 <div className="px-4 sm:px-6 pb-4 pl-8 sm:pl-12">
-                  <p className="text-gray-700 leading-relaxed text-sm sm:text-base">{item.answer}</p>
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base">{item.answer}</p>
                 </div>
               )}
             </div>
