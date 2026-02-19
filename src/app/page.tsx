@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import localImage from "../../public/assets/8d19f22e813cdeceb8a2db88700143efedced336.jpg";
 import { CommonGradientBtn } from "./../../public/common/gradient-button";
@@ -16,9 +17,32 @@ import { Carousel } from "@/components/ui/landingPage/Carousall";
 import { AuditedSecurity } from "@/components/ui/landingPage/AuditedSecurity";
 import { FAQ } from "@/components/ui/landingPage/FAQ";
 import { MarketplaceBlog } from "@/components/ui/landingPage/MarketPlaceBlog";
-import { properties as PROPERTIES } from "@/data/dummy";
+import { properties as FALLBACK_PROPERTIES } from "@/data/dummy";
+import { api } from "@/lib/api";
+import type { Property } from "@/data/dummy";
 
 export function PropertyListing() {
+  const [properties, setProperties] = useState<Property[]>(FALLBACK_PROPERTIES);
+
+  useEffect(() => {
+    api.properties
+      .list()
+      .then((list) => {
+        if (list?.length) {
+          setProperties(
+            list.map((p) => ({
+              image: p.image,
+              type: p.type,
+              location: p.location,
+              rating: p.rating,
+              price: p.price,
+            }))
+          );
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <section className="w-full py-16 bg-white dark:bg-[#0b0f1a] px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
@@ -38,7 +62,7 @@ export function PropertyListing() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {PROPERTIES.map((property, index) => (
+          {properties.map((property, index) => (
             <PropertyCard key={index} {...property} />
           ))}
         </div>
